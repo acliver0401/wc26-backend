@@ -1,0 +1,22 @@
+[
+  {"team": "England", "heat_score": 1.0, "heat_change": 0.055, "heat_direction": "up", "base_popularity": 94, "active_users_24h": 983452, "mention_count": 767200, "sentiment_ratio": 0.61},
+  {"team": "Brazil", "heat_score": 1.0, "heat_change": 0.01, "heat_direction": "up", "base_popularity": 98, "active_users_24h": 1232264, "mention_count": 2236973, "sentiment_ratio": 0.52},
+  {"team": "Spain", "heat_score": 1.0, "heat_change": 0.1, "heat_direction": "up", "base_popularity": 89, "active_users_24h": 980174, "mention_count": 1894029, "sentiment_ratio": 0.7},
+  {"team": "Argentina", "heat_score": 1.0, "heat_change": 0.028, "heat_direction": "up", "base_popularity": 97, "active_users_24h": 1211781, "mention_count": 2235535, "sentiment_ratio": 0.556},
+  {"team": "Germany", "heat_score": 1.0, "heat_change": 0.079, "heat_direction": "up", "base_popularity": 92, "active_users_24h": 320149, "mention_count": 415107, "sentiment_ratio": 0.658},
+  {"team": "France", "heat_score": 1.0, "heat_change": 0.051, "heat_direction": "up", "base_popularity": 95, "active_users_24h": 449244, "mention_count": 605518, "sentiment_ratio": 0.602},
+  {"team": "Belgium", "heat_score": 0.995, "heat_change": 0.109, "heat_direction": "up", "base_popularity": 85, "active_users_24h": 183077, "mention_count": 171312, "sentiment_ratio": 0.718},
+  {"team": "Netherlands", "heat_score": 0.983, "heat_change": 0.142, "heat_direction": "up", "base_popularity": 87, "active_users_24h": 254967, "mention_count": 303918, "sentiment_ratio": 0.784},
+  {"team": "Portugal", "heat_score": 0.983, "heat_change": 0.102, "heat_direction": "up", "base_popularity": 88, "active_users_24h": 593558, "mention_count": 725393, "sentiment_ratio": 0.704},
+  {"team": "Mexico", "heat_score": 0.963, "heat_change": 0.106, "heat_direction": "up", "base_popularity": 84, "active_users_24h": 633565, "mention_count": 1256936, "sentiment_ratio": 0.712},
+  {"team": "Uruguay", "heat_score": 0.916, "heat_change": 0.122, "heat_direction": "up", "base_popularity": 80, "active_users_24h": 382839, "mention_count": 445947, "sentiment_ratio": 0.744},
+  {"team": "South Korea", "heat_score": 0.913, "heat_change": 0.137, "heat_direction": "up", "base_popularity": 77, "active_users_24h": 137546, "mention_count": 159105, "sentiment_ratio": 0.774},
+  {"team": "Colombia", "heat_score": 0.901, "heat_change": 0.144, "heat_direction": "up", "base_popularity": 79, "active_users_24h": 853136, "mention_count": 509593, "sentiment_ratio": 0.788},
+  {"team": "Morocco", "heat_score": 0.871, "heat_change": 0.078, "heat_direction": "up", "base_popularity": 75, "active_users_24h": 724877, "mention_count": 372804, "sentiment_ratio": 0.656},
+  {"team": "Egypt", "heat_score": 0.866, "heat_change": 0.134, "heat_direction": "up", "base_popularity": 70, "active_users_24h": 823127, "mention_count": 833757, "sentiment_ratio": 0.768},
+  {"team": "Japan", "heat_score": 0.863, "heat_change": 0.089, "heat_direction": "up", "base_popularity": 78, "active_users_24h": 107585, "mention_count": 211459, "sentiment_ratio": 0.678},
+  {"team": "Senegal", "heat_score": 0.858, "heat_change": 0.166, "heat_direction": "up", "base_popularity": 73, "active_users_24h": 519453, "mention_count": 268831, "sentiment_ratio": 0.8},
+  {"team": "Croatia", "heat_score": 0.853, "heat_change": 0.118, "heat_direction": "up", "base_popularity": 72, "active_users_24h": 602603, "mention_count": 1155373, "sentiment_ratio": 0.736},
+  {"team": "Curaçao", "heat_score": 0.797, "heat_change": 0.105, "heat_direction": "up", "base_popularity": 67, "active_users_24h": 194173, "mention_count": 307338, "sentiment_ratio": 0.71},
+  {"team": "Haiti", "heat_score": 0.789, "heat_change": 0.105, "heat_direction": "up", "base_popularity": 69, "active_users_24h": 825980, "mention_count": 758827, "sentiment_ratio": 0.71}
+]
