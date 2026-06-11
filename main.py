@@ -77,7 +77,7 @@ app = FastAPI(
 cors_origins = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    "https://wc26.vercel.app",
+    "https://wc26-frontend-tau.vercel.app",
 ]
 extra = os.getenv("CORS_ORIGINS", "").strip()
 if extra:
