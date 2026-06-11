@@ -22,6 +22,7 @@ from typing import Optional
 from models.predictor import predict_match
 from pipeline.backtest import run_daily_backtest, get_backtest_summary
 from pipeline.result_fetcher import fetch_yesterday_results
+from pipeline.lineup_fetcher import run_lineup_poll, get_lineup_multipliers
 from services.weather import fetch_all_weather, load_weather_cache, get_weather_for_stadium
 from services.injuries import generate_injuries, load_injury_cache, get_injuries_for_team
 
@@ -99,6 +100,19 @@ async def execute_daily_pipeline(
             injuries = generate_injuries(seed=hour_seed)
             summary["phases"]["injuries"] = {"teams": len(injuries)}
 
+            # 2c. Lineup polling
+            try:
+                lineup_summary = await run_lineup_poll()
+                summary["phases"]["lineups"] = lineup_summary
+                _logger.info(
+                    "Phase 2c LINEUPS: %d checked, %d fetched",
+                    lineup_summary.get("matches_checked", 0),
+                    lineup_summary.get("lineups_fetched", 0),
+                )
+            except Exception:
+                _logger.exception("Phase 2c LINEUP poll failed")
+                summary["phases"]["lineups"] = {"status": "error"}
+
             _logger.info(
                 "Phase 2 REFRESH: weather %d/%d, injuries %d teams",
                 w_ok, len(weather_results), len(injuries),
@@ -107,6 +121,7 @@ async def execute_daily_pipeline(
             _logger.exception("Phase 2 REFRESH failed")
             summary["phases"]["weather"] = {"status": "error"}
             summary["phases"]["injuries"] = {"status": "error"}
+            summary["phases"]["lineups"] = {"status": "error"}
 
     # =================================================================
     # Phase 3 — Re-predict all future matches (Poisson model)
@@ -134,10 +149,14 @@ async def execute_daily_pipeline(
                     new_predictions.append(pred)
 
                 # Attach backtest metadata
+                # Count Live-Lineup matches
+                live_count = sum(1 for p in new_predictions if p.get("prediction_status") == "Live-Lineup")
+
                 bt_summary = get_backtest_summary()
                 out = {
                     "updated_at": datetime.utcnow().isoformat() + "Z",
                     "count": len(new_predictions),
+                    "live_lineup_count": live_count,
                     "backtest": {
                         "accuracy": bt_summary["cumulative"]["accuracy"],
                         "total_matches": bt_summary["cumulative"]["total_matches"],

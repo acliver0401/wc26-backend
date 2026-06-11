@@ -16,6 +16,7 @@ from fastapi.responses import JSONResponse
 from models.predictor import predict_match
 from pipeline.cron_update import execute_daily_pipeline
 from pipeline.backtest import get_backtest_summary
+from pipeline.lineup_fetcher import run_lineup_poll, reset_lineup_cache, get_lineup_multipliers
 
 router = APIRouter(prefix="/api", tags=["predictions"])
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
@@ -71,6 +72,7 @@ def _get_cache_metadata() -> dict:
         "predictions_updated_at": None,
         "weather_updated_at": None,
         "injuries_updated_at": None,
+        "lineups_updated_at": None,
     }
     for key, filename in [
         ("predictions_updated_at", "latest_predictions.json"),
@@ -82,6 +84,13 @@ def _get_cache_metadata() -> dict:
             with open(path, encoding="utf-8") as f:
                 raw = json.load(f)
             meta[key] = raw.get("updated_at")
+
+    # Lineup cache
+    lineup_path = DATA_DIR / "lineup_cache.json"
+    if lineup_path.exists():
+        with open(lineup_path, encoding="utf-8") as f:
+            raw = json.load(f)
+        meta["lineups_updated_at"] = raw.get("updated_at")
     return meta
 
 
@@ -99,6 +108,9 @@ async def get_dashboard():
     stadiums = _load_json("stadium_meta.json")
     cache_meta = _get_cache_metadata()
 
+    # Count live-lineup matches
+    live_count = sum(1 for p in predictions if p.get("prediction_status") == "Live-Lineup")
+
     return {
         "meta": {
             "title": "世界杯2026预测系统",
@@ -107,6 +119,7 @@ async def get_dashboard():
             "total_matches": 104,
             "backtest_accuracy": 0.0,
             "training_samples": 0,
+            "live_lineup_count": live_count,
             "cache": cache_meta,
         },
         "predictions": predictions,
@@ -177,6 +190,42 @@ async def cache_status():
 
 
 # ---------------------------------------------------------------------------
+# Lineup routes — v4.0.0 live starting XI data
+# ---------------------------------------------------------------------------
+
+@router.get("/lineups")
+async def get_lineups():
+    """Return the full lineup cache with all fetched starting XIs."""
+    path = DATA_DIR / "lineup_cache.json"
+    if path.exists():
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    return {"updated_at": None, "matches": {}, "team_benchmarks": {}}
+
+
+@router.get("/lineup/{home}/{away}/{date}")
+async def get_match_lineup(
+    home: str,
+    away: str,
+    date: str,
+):
+    """
+    Get lineup & multiplier data for a specific match.
+
+    Example: /api/lineup/Mexico/South Africa/2026-06-11
+    """
+    match_key = f"{date}_{home}_{away}"
+    multipliers = get_lineup_multipliers(home, away, match_key)
+    return {
+        "match_key": match_key,
+        "home_team": home,
+        "away_team": away,
+        "match_date": date,
+        **multipliers,
+    }
+
+
+# ---------------------------------------------------------------------------
 # Admin routes — pipeline control & backtest visibility
 # ---------------------------------------------------------------------------
 
@@ -207,3 +256,29 @@ async def backtest_history():
 async def backtest_summary():
     """Return cumulative backtest summary only."""
     return get_backtest_summary()
+
+
+@admin_router.post("/force-refresh-lineup")
+async def force_refresh_lineup():
+    """
+    Trigger an immediate lineup polling cycle.
+
+    External cron services (e.g., cron-job.org) should call this endpoint
+    every 5 minutes starting 75 minutes before the first match of the day.
+    """
+    try:
+        result = await run_lineup_poll()
+        return {
+            "status": "ok",
+            "summary": result,
+            "hint": "If lineups were fetched, re-run POST /api/admin/force-refresh to regenerate predictions with Live-Lineup multipliers.",
+        }
+    except Exception as e:
+        return JSONResponse(status_code=500, content={"status": "error", "detail": str(e)})
+
+
+@admin_router.post("/reset-lineups")
+async def reset_lineups():
+    """Clear all cached lineups (for testing / debugging)."""
+    count = reset_lineup_cache()
+    return {"status": "ok", "cleared_entries": count, "hint": "Run force-refresh to regenerate baseline predictions."}

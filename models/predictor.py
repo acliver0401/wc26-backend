@@ -24,6 +24,7 @@ from pathlib import Path
 from typing import Optional
 
 from features.environmental import get_env_features
+from pipeline.lineup_fetcher import get_lineup_multipliers
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 
@@ -380,6 +381,43 @@ def _generate_reason(
     return "；".join(parts)
 
 
+def _generate_reason_v4(
+    pred: str,
+    conf: float,
+    home_team: str,
+    away_team: str,
+    home_rank: int,
+    away_rank: int,
+    env_features: dict,
+    home_injuries: float = 0,
+    away_injuries: float = 0,
+    prediction_status: str = "Pre-Match",
+    lineup_info: dict | None = None,
+    home_multiplier: float = 1.0,
+    away_multiplier: float = 1.0,
+) -> str:
+    """Extended reason generator that includes lineup context."""
+    base = _generate_reason(
+        pred, conf, home_team, away_team, home_rank, away_rank,
+        env_features, home_injuries, away_injuries,
+    )
+
+    if prediction_status != "Live-Lineup" or lineup_info is None:
+        return base
+
+    parts = [base]
+    insight = lineup_info.get("insight", "")
+    if insight:
+        parts.append(f"【首发已锁定】{insight}")
+
+    delta_home = (home_multiplier - 1.0) * 100
+    delta_away = (away_multiplier - 1.0) * 100
+    if abs(delta_home) > 1 or abs(delta_away) > 1:
+        parts.append(f"临场修正(主{delta_home:+.1f}%/客{delta_away:+.1f}%)")
+
+    return "；".join(parts)
+
+
 def _generate_bet_advice(pred: str, conf: float, env_features: dict) -> str:
     has_warning = len(env_features.get("warnings", [])) > 1 or (
         len(env_features["warnings"]) == 1 and "环境条件中性" not in env_features["warnings"][0]
@@ -582,6 +620,15 @@ def predict_match(
     lambda_h = _expected_goals(home_as, away_dw, is_home=True)
     lambda_a = _expected_goals(away_as, home_dw, is_home=False)
 
+    # --- Part D2: Live-Lineup multipliers (v4.0.0) ---------------------
+    match_key = f"{match_date}_{home_team}_{away_team}"
+    lineup_info = get_lineup_multipliers(home_team, away_team, match_key)
+    prediction_status = lineup_info["prediction_status"]
+
+    if prediction_status == "Live-Lineup":
+        lambda_h *= lineup_info["home_multiplier"]
+        lambda_a *= lineup_info["away_multiplier"]
+
     # Tilt lambdas toward the ensemble result
     if pred_r == "H":
         lambda_h *= (0.85 + ph * 0.35)
@@ -595,6 +642,30 @@ def predict_match(
         lambda_h = lambda_h * (1 - mix) + avg * mix
         lambda_a = lambda_a * (1 - mix) + avg * mix
 
+    # Recompute H/D/A with lineup-adjusted lambdas when Live-Lineup
+    if prediction_status == "Live-Lineup":
+        total_goals = lambda_h + lambda_a
+        adj_home = 0.38 + (lambda_h - lambda_a) / max(total_goals, 0.5) * 0.25
+        adj_away = 0.27 - (lambda_h - lambda_a) / max(total_goals, 0.5) * 0.25
+        adj_draw = 1.0 - adj_home - adj_away
+        adj_home = max(0.03, min(0.70, adj_home))
+        adj_away = max(0.03, min(0.70, adj_away))
+        adj_total = adj_home + adj_draw + adj_away
+        l_ph, l_pd, l_pa = adj_home / adj_total, adj_draw / adj_total, adj_away / adj_total
+
+        # Blend live-lineup HDA with ensemble HDA (60% live / 40% ensemble)
+        ph = ph * 0.4 + l_ph * 0.6
+        pd = pd * 0.4 + l_pd * 0.6
+        pa = pa * 0.4 + l_pa * 0.6
+
+        # Re-determine result
+        if ph >= pd and ph >= pa:
+            pred, pred_r, conf = "主胜", "H", ph
+        elif pa >= ph and pa >= pd:
+            pred, pred_r, conf = "客胜", "A", pa
+        else:
+            pred, pred_r, conf = "平局", "D", pd
+
     score_probs = _bivariate_poisson_matrix(lambda_h, lambda_a)
 
     # --- Part E: Narrative simulation ----------------------------------
@@ -606,9 +677,13 @@ def predict_match(
     )
 
     # --- Part F: Reason & advice ---------------------------------------
-    reason = _generate_reason(
+    reason = _generate_reason_v4(
         pred, conf * 100, home_team, away_team, home_rank, away_rank,
         env_features, home_core_inj, away_core_inj,
+        prediction_status=prediction_status,
+        lineup_info=lineup_info.get("lineup_details"),
+        home_multiplier=lineup_info.get("home_multiplier", 1.0),
+        away_multiplier=lineup_info.get("away_multiplier", 1.0),
     )
     bet_advice = _generate_bet_advice(pred, conf * 100, env_features)
 
@@ -650,4 +725,11 @@ def predict_match(
         "home_fatigue_pct": env_features["home_fatigue_pct"],
         "away_fatigue_pct": env_features["away_fatigue_pct"],
         "warnings": env_features["warnings"],
+        # v4.0.0 Live-Lineup fields
+        "prediction_status": prediction_status,
+        "lineup_info": lineup_info.get("lineup_details"),
+        "home_formation": lineup_info.get("home_formation"),
+        "away_formation": lineup_info.get("away_formation"),
+        "home_formation_label": lineup_info.get("home_formation_label"),
+        "away_formation_label": lineup_info.get("away_formation_label"),
     }
