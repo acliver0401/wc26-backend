@@ -1,21 +1,23 @@
 """
-Live Lineup Fetcher & Feature Engineering — v4.0.1.
+Live Lineup Fetcher & Feature Engineering — v4.1.0.
 
 High-frequency polling (every 5 min, T-75min to kickoff) for official
-FIFA.com starting XIs. Once a lineup is captured, the system transitions
-from "Pre-Match" to "Live-Lineup" status and computes three correction
-multipliers that feed the Poisson predictor:
+starting XIs via API-SPORTS / Dongqiudi with player_db fallback. Once a
+lineup is captured, the system transitions from "Pre-Match" to "Live-Lineup"
+status and computes three correction multipliers that feed the Poisson
+predictor:
 
   1. Formation Matrix  (F_matrix)       — tactical matchup adjustment
   2. Squad Quality Delta (Q_delta)       — starting XI vs best XI gap
   3. Player Style Index  (S_index)       — aggregated playing-style factors
 
 SAFETY (v4.0.1): The system will NEVER serve fake "Player X" names.
-If a squad is missing from player_db.json or validation fails, the match
-stays in "Pre-Match" status with a FATAL-level log entry.
+If all sources fail and player_db is missing the squad, the match stays in
+"Pre-Match" status with a FATAL-level log entry.
 
 Architecture:
   lineup_fetcher.py  (this file)   — polling + feature engineering
+  services/lineup_api.py           — API-SPORTS / Dongqiudi client (v4.1.0)
   models/predictor.py              — applies multipliers to λ_home / λ_away
   services/scheduler.py            — manages poll job lifecycle
   data/player_db.json              — 48-team squad rosters with ratings & style tags
@@ -443,30 +445,84 @@ def _load_player_db() -> dict:
     return {"squads": {}}
 
 
-def fetch_match_lineup(
+def _backfill_player_ratings(lineup_data: dict) -> dict:
+    """Backfill player ratings and style tags from player_db after an API fetch.
+
+    API-SPORTS and Dongqiudi don't provide our internal rating/tag system,
+    so we match each player name against player_db.json to pull in their
+    known rating and style tags.  Players not found keep the default rating 80.
+    """
+    player_db = _load_player_db()
+    squads = player_db.get("squads", {})
+
+    for side in ("home_lineup", "away_lineup"):
+        players = lineup_data.get(side, {}).get("players", [])
+        for p in players:
+            api_name = p.get("name", "")
+            if not api_name:
+                p.setdefault("tags", [])
+                continue
+
+            best: dict | None = None
+            for squad in squads.values():
+                for sp in squad:
+                    if _player_name_match(sp["name"], api_name):
+                        if best is None or sp.get("rating", 0) > best.get("rating", 0):
+                            best = sp
+            if best:
+                p["rating"] = best.get("rating", p.get("rating", 80))
+                p["tags"] = best.get("tags", [])
+            else:
+                p.setdefault("tags", [])
+
+    return lineup_data
+
+
+def _player_name_match(db_name: str, api_name: str) -> bool:
+    """Case-insensitive match on last name or full name initials+last pattern."""
+    db_parts = db_name.lower().strip().split()
+    api_parts = api_name.lower().strip().split()
+    if not db_parts or not api_parts:
+        return False
+    # Match last name (e.g., "G. Ochoa" matches "Ochoa")
+    if db_parts[-1] == api_parts[-1]:
+        return True
+    # Match full name exactly
+    if db_name.lower().strip() == api_name.lower().strip():
+        return True
+    # Match first-initial + last (e.g., "G. Ochoa" == "Guillermo Ochoa")
+    if len(db_parts) >= 2 and len(api_parts) >= 2:
+        if db_parts[-1] == api_parts[-1] and db_parts[0][0] == api_parts[0][0]:
+            return True
+    return False
+
+
+# Removed _generate_generic_xi() in v4.0.1 — it produced fake "Player X"
+# names that contaminated production.
+
+
+async def fetch_match_lineup(
     home_team: str,
     away_team: str,
     match_date: str,
     stadium_id: str = "",
-) -> dict:
+) -> dict | None:
     """
-    Attempt to fetch official starting lineups from external sources.
+    Fetch official starting lineups — API-first with player_db fallback.
 
-    Current implementation:
+    v4.1.0 priority:
       1. Check if lineups are already cached.
-      2. If not, generate realistic lineups from player_db.json as a
-         deterministic simulation (based on match_date + team seed).
-      3. In production, this would be replaced with actual FIFA.com API calls.
+      2. Try API-SPORTS (api-football.com v3), then Dongqiudi.
+      3. On success: backfill ratings from player_db.json, cache, return.
+      4. On LineupNotAvailable: log, return None (stay Pre-Match).
+      5. On API error: fall back to player_db simulation.
+      6. On player_db miss: log FATAL, return None (stay Pre-Match).
 
     The match_key format is: "YYYY-MM-DD_home_away"
-
-    Returns:
-      dict with keys: home_lineup, away_lineup, status, fetched_at, source
-      OR None if lineups aren't available yet (too early).
     """
     match_key = f"{match_date}_{home_team}_{away_team}"
 
-    # Check cache first
+    # --- Check cache first ---
     cache = _load_lineup_cache()
     if match_key in cache.get("matches", {}):
         cached = cache["matches"][match_key]
@@ -474,33 +530,90 @@ def fetch_match_lineup(
             _logger.info("Lineup cache hit for %s", match_key)
             return cached
 
-    # Parse match time to decide if we should generate lineups
+    # --- Parse match time ---
     try:
         match_dt = datetime.strptime(match_date, "%Y-%m-%d")
     except ValueError:
         return None
 
     now = datetime.now(timezone.utc)
-    # Match kickoff is assumed at 19:00 UTC on match_date
     kickoff = match_dt.replace(hour=19, minute=0, second=0, tzinfo=timezone.utc)
     minutes_to_kickoff = (kickoff - now).total_seconds() / 60.0
 
-    # Only "release" lineups between T-75min and kickoff
+    # Only fetch between T-75min and T+120min
     if minutes_to_kickoff > 75:
-        _logger.debug(
-            "Too early for %s (%.0f min to kickoff)", match_key, minutes_to_kickoff,
-        )
+        _logger.debug("Too early for %s (%.0f min to kickoff)", match_key, minutes_to_kickoff)
         return None
     if minutes_to_kickoff < -120:
         _logger.debug("Match %s is in the past, skipping", match_key)
         return None
 
-    # Generate lineups from player database
-    _logger.info("Attempting lineup generation for %s (%.0f min to kickoff)", match_key, minutes_to_kickoff)
+    # ── v4.1.0: API-first path ──────────────────────────────────────────
+    _logger.info("Fetching lineup for %s via API (%.0f min to kickoff)", match_key, minutes_to_kickoff)
+
+    # Lazy-import to keep the module loadable without aiohttp installed
+    try:
+        from services.lineup_api import (
+            LineupAPIError,
+            LineupNotAvailable,
+            get_lineup_api_client,
+        )
+    except ImportError:
+        _logger.warning("lineup_api not available (missing aiohttp?) — using player_db fallback")
+        return _generate_lineup_from_player_db(home_team, away_team, match_date, match_key, cache)
+
+    try:
+        client = get_lineup_api_client()
+        api_result = await client.fetch_lineup(
+            home_team, away_team, match_date, stadium_id=stadium_id,
+        )
+        if api_result:
+            api_result = _backfill_player_ratings(api_result)
+            # Validate after backfill: reject if all ratings are still uniform default
+            if _has_uniform_default_ratings(api_result):
+                _logger.warning(
+                    "API lineup for %s has uniform default ratings — "
+                    "player_db backfill may be incomplete; using player_db simulation instead",
+                    match_key,
+                )
+            else:
+                cache["matches"][match_key] = api_result
+                cache["updated_at"] = datetime.now(timezone.utc).isoformat()
+                _save_lineup_cache(cache)
+                _logger.info("Lineup cached for %s via %s", match_key, api_result.get("source", "api"))
+                return api_result
+    except LineupNotAvailable:
+        _logger.info("API: lineups not yet available for %s", match_key)
+    except LineupAPIError as e:
+        _logger.warning("API error for %s: %s — falling back to player_db", match_key, e)
+    except Exception:
+        _logger.exception("Unexpected API error for %s — falling back to player_db", match_key)
+
+    # ── Fallback: player_db simulation ──────────────────────────────────
+    _logger.info("Falling back to player_db simulation for %s", match_key)
+    return _generate_lineup_from_player_db(home_team, away_team, match_date, match_key, cache)
+
+
+def _has_uniform_default_ratings(lineup_data: dict) -> bool:
+    """Check if all players still have default rating 80 (failed backfill)."""
+    for side in ("home_lineup", "away_lineup"):
+        ratings = {p.get("rating", 0) for p in lineup_data.get(side, {}).get("players", [])}
+        if ratings == {80}:
+            return True
+    return False
+
+
+def _generate_lineup_from_player_db(
+    home_team: str,
+    away_team: str,
+    match_date: str,
+    match_key: str,
+    cache: dict,
+) -> dict | None:
+    """Fallback: generate lineups deterministically from player_db.json."""
     player_db = _load_player_db()
     squads = player_db.get("squads", {})
 
-    # --- Validate squad availability BEFORE attempting selection ---
     home_squad = squads.get(home_team)
     away_squad = squads.get(away_team)
 
@@ -508,22 +621,19 @@ def fetch_match_lineup(
     if not home_squad or len(home_squad) < 11:
         missing_teams.append(home_team)
         _logger.error(
-            "FATAL: %s squad missing or too small in player_db.json (%d players). "
-            "Add full squad data for this team.",
+            "FATAL: %s squad missing or too small in player_db.json (%d players).",
             home_team, len(home_squad) if home_squad else 0,
         )
     if not away_squad or len(away_squad) < 11:
         missing_teams.append(away_team)
         _logger.error(
-            "FATAL: %s squad missing or too small in player_db.json (%d players). "
-            "Add full squad data for this team.",
+            "FATAL: %s squad missing or too small in player_db.json (%d players).",
             away_team, len(away_squad) if away_squad else 0,
         )
 
     if missing_teams:
         _logger.error(
-            "Cannot generate lineup for %s — missing squads: %s. "
-            "Match stays Pre-Match.",
+            "Cannot generate lineup for %s — missing squads: %s. Match stays Pre-Match.",
             match_key, ", ".join(missing_teams),
         )
         return None
@@ -531,38 +641,33 @@ def fetch_match_lineup(
     home_players = _select_starting_xi(home_squad, home_team, match_date, "home")
     away_players = _select_starting_xi(away_squad, away_team, match_date, "away")
 
-    # Double-check: if _select_starting_xi returned empty list, bail out
     if len(home_players) < 11 or len(away_players) < 11:
         _logger.error(
-            "Cannot generate lineup for %s — _select_starting_xi returned "
-            "incomplete XI (home: %d, away: %d). Match stays Pre-Match.",
+            "Cannot generate lineup for %s — incomplete XI (home: %d, away: %d).",
             match_key, len(home_players), len(away_players),
         )
         return None
 
-    # --- Validate player names: reject "Player X" placeholder patterns ---
+    # Validate player names: reject "Player X" patterns
     for p in home_players + away_players:
         name = p.get("name", "")
-        if not name or name.endswith("Player 1") or name.endswith("Player 11") or "Player " in name:
+        if not name or "Player " in name:
             _logger.error(
-                "FATAL: Placeholder player name detected: '%s'. "
-                "Refusing to generate lineup for %s. Match stays Pre-Match.",
+                "FATAL: Placeholder player name '%s' for %s. Match stays Pre-Match.",
                 name, match_key,
             )
             return None
 
-    # --- Validate ratings: reject uniform 75 (generic fallback rating) ---
+    # Validate ratings: reject uniform 75
     home_ratings = {p.get("rating", 0) for p in home_players}
     away_ratings = {p.get("rating", 0) for p in away_players}
     if home_ratings == {75} or away_ratings == {75}:
         _logger.error(
-            "FATAL: All players have uniform rating 75 for %s — likely fake data. "
-            "Match stays Pre-Match.",
+            "FATAL: Uniform rating 75 for %s — likely fake data. Match stays Pre-Match.",
             match_key,
         )
         return None
 
-    # Select formations
     benchmarks = cache.get("team_benchmarks", {})
     home_fmt = benchmarks.get(home_team, {}).get("formation_default", "4-3-3")
     away_fmt = benchmarks.get(away_team, {}).get("formation_default", "4-4-2")
@@ -581,12 +686,11 @@ def fetch_match_lineup(
         },
     }
 
-    # Persist to cache
     cache["matches"][match_key] = lineup_data
     cache["updated_at"] = datetime.now(timezone.utc).isoformat()
     _save_lineup_cache(cache)
 
-    _logger.info("Lineup cached for %s — status now Live-Lineup", match_key)
+    _logger.info("Lineup cached for %s via player_db fallback", match_key)
     return lineup_data
 
 
@@ -659,11 +763,6 @@ def _serialize_players(players: list[dict]) -> list[dict]:
     ]
 
 
-
-# _generate_generic_xi() was REMOVED in v4.0.1 — it produced fake "Player X"
-# names that contaminated production.  If a squad is missing from player_db.json,
-# fetch_match_lineup() now returns None (Pre-Match) and logs a FATAL error.
-
 # ---------------------------------------------------------------------------
 # Polling orchestration
 # ---------------------------------------------------------------------------
@@ -723,7 +822,7 @@ async def run_lineup_poll() -> dict:
 
     for m in matches:
         try:
-            result = fetch_match_lineup(
+            result = await fetch_match_lineup(
                 home_team=m["home"],
                 away_team=m["away"],
                 match_date=m["date"],
