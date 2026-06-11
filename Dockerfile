@@ -1,9 +1,9 @@
 FROM python:3.12-slim
 
-WORKDIR /app
+# --- Cache bust: increment this timestamp to force full Docker rebuild ---
+ARG CACHE_BUST=20260611_2245
 
-# Force fresh build — bump this comment to bust Docker cache
-# BUILD-TAG: v3.0.0-20260611-b
+WORKDIR /app
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc g++ \
@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+ARG CACHE_BUST2=20260611_2245
 COPY . .
 
 EXPOSE 8000
