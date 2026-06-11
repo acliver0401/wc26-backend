@@ -1,5 +1,5 @@
 """
-Live Lineup Fetcher & Feature Engineering — v4.0.0.
+Live Lineup Fetcher & Feature Engineering — v4.0.1.
 
 High-frequency polling (every 5 min, T-75min to kickoff) for official
 FIFA.com starting XIs. Once a lineup is captured, the system transitions
@@ -10,11 +10,15 @@ multipliers that feed the Poisson predictor:
   2. Squad Quality Delta (Q_delta)       — starting XI vs best XI gap
   3. Player Style Index  (S_index)       — aggregated playing-style factors
 
+SAFETY (v4.0.1): The system will NEVER serve fake "Player X" names.
+If a squad is missing from player_db.json or validation fails, the match
+stays in "Pre-Match" status with a FATAL-level log entry.
+
 Architecture:
   lineup_fetcher.py  (this file)   — polling + feature engineering
   models/predictor.py              — applies multipliers to λ_home / λ_away
   services/scheduler.py            — manages poll job lifecycle
-  data/player_db.json              — squad rosters with ratings & style tags
+  data/player_db.json              — 48-team squad rosters with ratings & style tags
   data/lineup_cache.json           — fetched lineups with metadata
 """
 
