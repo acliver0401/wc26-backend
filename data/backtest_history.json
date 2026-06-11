@@ -1,0 +1,12 @@
+{
+  "updated_at": null,
+  "cumulative": {
+    "total_matches": 0,
+    "correct_predictions": 0,
+    "accuracy": 0.0,
+    "total_stake": 0,
+    "total_return": 0,
+    "roi": 0.0
+  },
+  "daily_records": []
+}

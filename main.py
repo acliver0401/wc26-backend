@@ -17,7 +17,7 @@ from pathlib import Path
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from routers.api import router as api_router
+from routers.api import router as api_router, admin_router
 from services.scheduler import start_scheduler, shutdown_scheduler, run_initial_refresh
 
 logging.basicConfig(
@@ -44,9 +44,8 @@ async def lifespan(app: FastAPI):
     except Exception:
         logger.exception("Initial refresh failed; API will serve fallback data.")
 
-    # 2. Start periodic scheduler (default: every 6 hours)
-    #    Change cron_expr to "0 2 * * *" for daily at 02:00 local time.
-    start_scheduler(cron_expr="0 */6 * * *")
+    # 2. Start daily pipeline scheduler (05:00 Asia/Shanghai = 21:00 UTC)
+    start_scheduler()
 
     logger.info("=== WC26 Backend ready ===")
     yield  # application runs here
@@ -68,7 +67,7 @@ app = FastAPI(
         "tier-based sanity check (熔断机制), "
         "live weather (Open-Meteo), injury simulation, "
         "and environmental features. "
-        "Data refreshed every 6 hours via APScheduler."
+        "Daily pipeline with backtest + weather/injury refresh at 05:00 CST."
     ),
     version="3.0.0",
     lifespan=lifespan,
@@ -94,8 +93,9 @@ app.add_middleware(
 )
 
 app.include_router(api_router)
+app.include_router(admin_router)
 
 
 @app.get("/")
 async def root():
-    return {"service": "WC26 Prediction API", "version": "2.1.0", "docs": "/docs"}
+    return {"service": "WC26 Prediction API", "version": "3.0.0", "docs": "/docs"}
