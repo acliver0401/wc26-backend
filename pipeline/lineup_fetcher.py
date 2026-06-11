@@ -492,25 +492,76 @@ def fetch_match_lineup(
         return None
 
     # Generate lineups from player database
-    _logger.info("Generating lineups for %s (%.0f min to kickoff)", match_key, minutes_to_kickoff)
+    _logger.info("Attempting lineup generation for %s (%.0f min to kickoff)", match_key, minutes_to_kickoff)
     player_db = _load_player_db()
     squads = player_db.get("squads", {})
 
-    home_players = _select_starting_xi(squads.get(home_team, []), home_team, match_date, "home")
-    away_players = _select_starting_xi(squads.get(away_team, []), away_team, match_date, "away")
+    # --- Validate squad availability BEFORE attempting selection ---
+    home_squad = squads.get(home_team)
+    away_squad = squads.get(away_team)
+
+    missing_teams: list[str] = []
+    if not home_squad or len(home_squad) < 11:
+        missing_teams.append(home_team)
+        _logger.error(
+            "FATAL: %s squad missing or too small in player_db.json (%d players). "
+            "Add full squad data for this team.",
+            home_team, len(home_squad) if home_squad else 0,
+        )
+    if not away_squad or len(away_squad) < 11:
+        missing_teams.append(away_team)
+        _logger.error(
+            "FATAL: %s squad missing or too small in player_db.json (%d players). "
+            "Add full squad data for this team.",
+            away_team, len(away_squad) if away_squad else 0,
+        )
+
+    if missing_teams:
+        _logger.error(
+            "Cannot generate lineup for %s — missing squads: %s. "
+            "Match stays Pre-Match.",
+            match_key, ", ".join(missing_teams),
+        )
+        return None
+
+    home_players = _select_starting_xi(home_squad, home_team, match_date, "home")
+    away_players = _select_starting_xi(away_squad, away_team, match_date, "away")
+
+    # Double-check: if _select_starting_xi returned empty list, bail out
+    if len(home_players) < 11 or len(away_players) < 11:
+        _logger.error(
+            "Cannot generate lineup for %s — _select_starting_xi returned "
+            "incomplete XI (home: %d, away: %d). Match stays Pre-Match.",
+            match_key, len(home_players), len(away_players),
+        )
+        return None
+
+    # --- Validate player names: reject "Player X" placeholder patterns ---
+    for p in home_players + away_players:
+        name = p.get("name", "")
+        if not name or name.endswith("Player 1") or name.endswith("Player 11") or "Player " in name:
+            _logger.error(
+                "FATAL: Placeholder player name detected: '%s'. "
+                "Refusing to generate lineup for %s. Match stays Pre-Match.",
+                name, match_key,
+            )
+            return None
+
+    # --- Validate ratings: reject uniform 75 (generic fallback rating) ---
+    home_ratings = {p.get("rating", 0) for p in home_players}
+    away_ratings = {p.get("rating", 0) for p in away_players}
+    if home_ratings == {75} or away_ratings == {75}:
+        _logger.error(
+            "FATAL: All players have uniform rating 75 for %s — likely fake data. "
+            "Match stays Pre-Match.",
+            match_key,
+        )
+        return None
 
     # Select formations
     benchmarks = cache.get("team_benchmarks", {})
     home_fmt = benchmarks.get(home_team, {}).get("formation_default", "4-3-3")
     away_fmt = benchmarks.get(away_team, {}).get("formation_default", "4-4-2")
-
-    # Occasionally introduce tactical surprises
-    if _random.random() < 0.12:
-        alt_formations = ["4-3-3", "4-4-2", "3-5-2", "4-2-3-1", "5-4-1", "3-4-3"]
-        if _random.random() < 0.5:
-            home_fmt = _random.choice(alt_formations)
-        else:
-            away_fmt = _random.choice(alt_formations)
 
     lineup_data = {
         "status": "Live-Lineup",
@@ -541,10 +592,18 @@ def _select_starting_xi(
     """
     Select 11 starters from the squad using a deterministic seed.
     Ensures 1 GK, 3-5 DEF, 2-5 MID, 1-3 FWD.
+
+    CRITICAL: If the squad has fewer than 11 real players, we return an
+    empty list.  The caller MUST handle this by keeping the match in
+    "Pre-Match" status.  NEVER generate fake "Player X" names.
     """
     if not squad or len(squad) < 11:
-        _logger.warning("Squad too small for %s (%d players), generating generic XI", team, len(squad))
-        return _generate_generic_xi(team)
+        _logger.error(
+            "FATAL: Squad for %s has only %d players — cannot select starting XI. "
+            "Match will remain Pre-Match. Add this team to player_db.json.",
+            team, len(squad) if squad else 0,
+        )
+        return []
 
     seed_val = hash(f"{team}{match_date}{side}") % 10000
     rng = random.Random(seed_val)
@@ -596,14 +655,10 @@ def _serialize_players(players: list[dict]) -> list[dict]:
     ]
 
 
-def _generate_generic_xi(team: str) -> list[dict]:
-    """Fallback generic XI when no squad data exists."""
-    positions = ["GK", "CB", "CB", "RB", "LB", "CM", "CM", "AM", "RW", "LW", "ST"]
-    return [
-        {"name": f"{team} Player {i+1}", "pos": pos, "rating": 75, "tags": []}
-        for i, pos in enumerate(positions)
-    ]
 
+# _generate_generic_xi() was REMOVED in v4.0.1 — it produced fake "Player X"
+# names that contaminated production.  If a squad is missing from player_db.json,
+# fetch_match_lineup() now returns None (Pre-Match) and logs a FATAL error.
 
 # ---------------------------------------------------------------------------
 # Polling orchestration

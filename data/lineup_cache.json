@@ -1,54 +1,452 @@
 {
-  "updated_at": null,
+  "updated_at": "2026-06-11T18:51:55.830047+00:00",
   "description": "Official starting lineups fetched from FIFA.com ~60min before kickoff. When empty, system uses Pre-Match baseline.",
-  "matches": {},
+  "matches": {
+    "2026-06-11_Mexico_South Africa": {
+      "status": "Live-Lineup",
+      "fetched_at": "2026-06-11T18:51:55.830047+00:00",
+      "source": "player_db_simulation",
+      "home_lineup": {
+        "formation": "4-3-3",
+        "players": [
+          {
+            "name": "G. Ochoa",
+            "pos": "GK",
+            "rating": 82,
+            "tags": [
+              "shot-stopper",
+              "veteran-leader",
+              "penalty-specialist"
+            ]
+          },
+          {
+            "name": "J. Vásquez",
+            "pos": "CB",
+            "rating": 81,
+            "tags": [
+              "ball-player"
+            ]
+          },
+          {
+            "name": "C. Montes",
+            "pos": "CB",
+            "rating": 82,
+            "tags": [
+              "aggressive-defender",
+              "aerial-threat"
+            ]
+          },
+          {
+            "name": "I. Reyes",
+            "pos": "CB",
+            "rating": 80,
+            "tags": [
+              "aggressive-defender"
+            ]
+          },
+          {
+            "name": "J. Gallardo",
+            "pos": "LB",
+            "rating": 80,
+            "tags": [
+              "defensive-fullback",
+              "veteran-leader"
+            ]
+          },
+          {
+            "name": "E. Álvarez",
+            "pos": "DM",
+            "rating": 84,
+            "tags": [
+              "defensive-mid",
+              "ball-winner",
+              "captain"
+            ]
+          },
+          {
+            "name": "C. Rodríguez",
+            "pos": "CM",
+            "rating": 80,
+            "tags": [
+              "box-to-box",
+              "workhorse"
+            ]
+          },
+          {
+            "name": "O. Pineda",
+            "pos": "CM",
+            "rating": 81,
+            "tags": [
+              "box-to-box",
+              "progressive-passer"
+            ]
+          },
+          {
+            "name": "H. Lozano",
+            "pos": "LW",
+            "rating": 84,
+            "tags": [
+              "speed-winger",
+              "clinical-finisher",
+              "big-game-player"
+            ]
+          },
+          {
+            "name": "S. Giménez",
+            "pos": "ST",
+            "rating": 82,
+            "tags": [
+              "clinical-finisher",
+              "pressing-forward"
+            ]
+          },
+          {
+            "name": "R. Jiménez",
+            "pos": "ST",
+            "rating": 83,
+            "tags": [
+              "target-forward",
+              "clinical-finisher",
+              "set-piece-specialist"
+            ]
+          }
+        ]
+      },
+      "away_lineup": {
+        "formation": "4-4-2",
+        "players": [
+          {
+            "name": "V. Mothwa",
+            "pos": "GK",
+            "rating": 77,
+            "tags": [
+              "shot-stopper"
+            ]
+          },
+          {
+            "name": "M. Mvala",
+            "pos": "CB",
+            "rating": 78,
+            "tags": [
+              "aggressive-defender"
+            ]
+          },
+          {
+            "name": "A. Modiba",
+            "pos": "LB",
+            "rating": 78,
+            "tags": [
+              "attacking-fullback"
+            ]
+          },
+          {
+            "name": "K. Mudau",
+            "pos": "RB",
+            "rating": 78,
+            "tags": [
+              "attacking-fullback"
+            ]
+          },
+          {
+            "name": "S. Kekana",
+            "pos": "CB",
+            "rating": 78,
+            "tags": [
+              "aggressive-defender"
+            ]
+          },
+          {
+            "name": "T. Monare",
+            "pos": "DM",
+            "rating": 78,
+            "tags": [
+              "defensive-mid"
+            ]
+          },
+          {
+            "name": "T. Mokoena",
+            "pos": "DM",
+            "rating": 81,
+            "tags": [
+              "defensive-mid",
+              "deep-lying-playmaker",
+              "ball-winner"
+            ]
+          },
+          {
+            "name": "S. Sithole",
+            "pos": "CM",
+            "rating": 79,
+            "tags": [
+              "box-to-box"
+            ]
+          },
+          {
+            "name": "T. Morena",
+            "pos": "RW",
+            "rating": 78,
+            "tags": [
+              "speed-winger"
+            ]
+          },
+          {
+            "name": "E. Makgopa",
+            "pos": "ST",
+            "rating": 79,
+            "tags": [
+              "target-forward",
+              "aerial-threat"
+            ]
+          },
+          {
+            "name": "P. Tau",
+            "pos": "RW",
+            "rating": 81,
+            "tags": [
+              "advanced-playmaker",
+              "second-striker",
+              "set-piece-specialist"
+            ]
+          }
+        ]
+      }
+    }
+  },
   "team_benchmarks": {
-    "Argentina": {"best_xi_avg_rating": 85.2, "best_xi_total_value_m": 780, "formation_default": "4-3-3"},
-    "France": {"best_xi_avg_rating": 86.1, "best_xi_total_value_m": 920, "formation_default": "4-2-3-1"},
-    "Spain": {"best_xi_avg_rating": 84.8, "best_xi_total_value_m": 750, "formation_default": "4-3-3"},
-    "Brazil": {"best_xi_avg_rating": 85.5, "best_xi_total_value_m": 850, "formation_default": "4-2-3-1"},
-    "England": {"best_xi_avg_rating": 84.3, "best_xi_total_value_m": 880, "formation_default": "4-3-3"},
-    "Portugal": {"best_xi_avg_rating": 83.9, "best_xi_total_value_m": 720, "formation_default": "4-3-3"},
-    "Netherlands": {"best_xi_avg_rating": 83.2, "best_xi_total_value_m": 680, "formation_default": "4-3-3"},
-    "Belgium": {"best_xi_avg_rating": 82.8, "best_xi_total_value_m": 560, "formation_default": "4-2-3-1"},
-    "Germany": {"best_xi_avg_rating": 83.5, "best_xi_total_value_m": 700, "formation_default": "4-2-3-1"},
-    "Uruguay": {"best_xi_avg_rating": 81.5, "best_xi_total_value_m": 480, "formation_default": "4-3-3"},
-    "Croatia": {"best_xi_avg_rating": 81.9, "best_xi_total_value_m": 420, "formation_default": "4-3-3"},
-    "Colombia": {"best_xi_avg_rating": 80.8, "best_xi_total_value_m": 380, "formation_default": "4-2-3-1"},
-    "Morocco": {"best_xi_avg_rating": 79.5, "best_xi_total_value_m": 350, "formation_default": "4-3-3"},
-    "Mexico": {"best_xi_avg_rating": 79.2, "best_xi_total_value_m": 320, "formation_default": "4-3-3"},
-    "Japan": {"best_xi_avg_rating": 79.8, "best_xi_total_value_m": 310, "formation_default": "4-2-3-1"},
-    "United States": {"best_xi_avg_rating": 78.9, "best_xi_total_value_m": 340, "formation_default": "4-3-3"},
-    "Senegal": {"best_xi_avg_rating": 78.5, "best_xi_total_value_m": 290, "formation_default": "4-3-3"},
-    "South Korea": {"best_xi_avg_rating": 78.2, "best_xi_total_value_m": 260, "formation_default": "4-4-2"},
-    "Switzerland": {"best_xi_avg_rating": 78.8, "best_xi_total_value_m": 280, "formation_default": "4-2-3-1"},
-    "Austria": {"best_xi_avg_rating": 78.5, "best_xi_total_value_m": 300, "formation_default": "4-2-3-1"},
-    "Ecuador": {"best_xi_avg_rating": 77.2, "best_xi_total_value_m": 200, "formation_default": "4-4-2"},
-    "Egypt": {"best_xi_avg_rating": 76.8, "best_xi_total_value_m": 190, "formation_default": "4-3-3"},
-    "Norway": {"best_xi_avg_rating": 79.5, "best_xi_total_value_m": 400, "formation_default": "4-3-3"},
-    "Turkey": {"best_xi_avg_rating": 77.5, "best_xi_total_value_m": 250, "formation_default": "4-2-3-1"},
-    "Canada": {"best_xi_avg_rating": 76.5, "best_xi_total_value_m": 220, "formation_default": "4-4-2"},
-    "Australia": {"best_xi_avg_rating": 76.2, "best_xi_total_value_m": 180, "formation_default": "4-3-3"},
-    "Sweden": {"best_xi_avg_rating": 77.8, "best_xi_total_value_m": 260, "formation_default": "4-4-2"},
-    "Scotland": {"best_xi_avg_rating": 76.5, "best_xi_total_value_m": 230, "formation_default": "3-4-3"},
-    "Czechia": {"best_xi_avg_rating": 77.0, "best_xi_total_value_m": 240, "formation_default": "4-2-3-1"},
-    "Saudi Arabia": {"best_xi_avg_rating": 74.5, "best_xi_total_value_m": 120, "formation_default": "4-4-2"},
-    "Iran": {"best_xi_avg_rating": 75.2, "best_xi_total_value_m": 140, "formation_default": "4-4-2"},
-    "Iraq": {"best_xi_avg_rating": 72.8, "best_xi_total_value_m": 80, "formation_default": "4-5-1"},
-    "Jordan": {"best_xi_avg_rating": 72.5, "best_xi_total_value_m": 75, "formation_default": "4-4-2"},
-    "Uzbekistan": {"best_xi_avg_rating": 73.2, "best_xi_total_value_m": 90, "formation_default": "4-4-2"},
-    "Qatar": {"best_xi_avg_rating": 74.0, "best_xi_total_value_m": 100, "formation_default": "4-3-3"},
-    "Algeria": {"best_xi_avg_rating": 77.0, "best_xi_total_value_m": 210, "formation_default": "4-3-3"},
-    "Tunisia": {"best_xi_avg_rating": 75.8, "best_xi_total_value_m": 170, "formation_default": "4-3-3"},
-    "Ghana": {"best_xi_avg_rating": 76.5, "best_xi_total_value_m": 200, "formation_default": "4-2-3-1"},
-    "Ivory Coast": {"best_xi_avg_rating": 78.2, "best_xi_total_value_m": 270, "formation_default": "4-3-3"},
-    "Congo DR": {"best_xi_avg_rating": 74.5, "best_xi_total_value_m": 130, "formation_default": "4-4-2"},
-    "South Africa": {"best_xi_avg_rating": 73.8, "best_xi_total_value_m": 110, "formation_default": "4-4-2"},
-    "Panama": {"best_xi_avg_rating": 72.2, "best_xi_total_value_m": 60, "formation_default": "5-4-1"},
-    "Haiti": {"best_xi_avg_rating": 71.5, "best_xi_total_value_m": 50, "formation_default": "4-5-1"},
-    "New Zealand": {"best_xi_avg_rating": 72.0, "best_xi_total_value_m": 65, "formation_default": "4-4-2"},
-    "Cape Verde Islands": {"best_xi_avg_rating": 73.5, "best_xi_total_value_m": 95, "formation_default": "4-3-3"},
-    "Curaçao": {"best_xi_avg_rating": 71.0, "best_xi_total_value_m": 40, "formation_default": "4-4-2"},
-    "Paraguay": {"best_xi_avg_rating": 77.2, "best_xi_total_value_m": 200, "formation_default": "4-4-2"}
+    "Argentina": {
+      "best_xi_avg_rating": 85.2,
+      "best_xi_total_value_m": 780,
+      "formation_default": "4-3-3"
+    },
+    "France": {
+      "best_xi_avg_rating": 86.1,
+      "best_xi_total_value_m": 920,
+      "formation_default": "4-2-3-1"
+    },
+    "Spain": {
+      "best_xi_avg_rating": 84.8,
+      "best_xi_total_value_m": 750,
+      "formation_default": "4-3-3"
+    },
+    "Brazil": {
+      "best_xi_avg_rating": 85.5,
+      "best_xi_total_value_m": 850,
+      "formation_default": "4-2-3-1"
+    },
+    "England": {
+      "best_xi_avg_rating": 84.3,
+      "best_xi_total_value_m": 880,
+      "formation_default": "4-3-3"
+    },
+    "Portugal": {
+      "best_xi_avg_rating": 83.9,
+      "best_xi_total_value_m": 720,
+      "formation_default": "4-3-3"
+    },
+    "Netherlands": {
+      "best_xi_avg_rating": 83.2,
+      "best_xi_total_value_m": 680,
+      "formation_default": "4-3-3"
+    },
+    "Belgium": {
+      "best_xi_avg_rating": 82.8,
+      "best_xi_total_value_m": 560,
+      "formation_default": "4-2-3-1"
+    },
+    "Germany": {
+      "best_xi_avg_rating": 83.5,
+      "best_xi_total_value_m": 700,
+      "formation_default": "4-2-3-1"
+    },
+    "Uruguay": {
+      "best_xi_avg_rating": 81.5,
+      "best_xi_total_value_m": 480,
+      "formation_default": "4-3-3"
+    },
+    "Croatia": {
+      "best_xi_avg_rating": 81.9,
+      "best_xi_total_value_m": 420,
+      "formation_default": "4-3-3"
+    },
+    "Colombia": {
+      "best_xi_avg_rating": 80.8,
+      "best_xi_total_value_m": 380,
+      "formation_default": "4-2-3-1"
+    },
+    "Morocco": {
+      "best_xi_avg_rating": 79.5,
+      "best_xi_total_value_m": 350,
+      "formation_default": "4-3-3"
+    },
+    "Mexico": {
+      "best_xi_avg_rating": 79.2,
+      "best_xi_total_value_m": 320,
+      "formation_default": "4-3-3"
+    },
+    "Japan": {
+      "best_xi_avg_rating": 79.8,
+      "best_xi_total_value_m": 310,
+      "formation_default": "4-2-3-1"
+    },
+    "United States": {
+      "best_xi_avg_rating": 78.9,
+      "best_xi_total_value_m": 340,
+      "formation_default": "4-3-3"
+    },
+    "Senegal": {
+      "best_xi_avg_rating": 78.5,
+      "best_xi_total_value_m": 290,
+      "formation_default": "4-3-3"
+    },
+    "South Korea": {
+      "best_xi_avg_rating": 78.2,
+      "best_xi_total_value_m": 260,
+      "formation_default": "4-4-2"
+    },
+    "Switzerland": {
+      "best_xi_avg_rating": 78.8,
+      "best_xi_total_value_m": 280,
+      "formation_default": "4-2-3-1"
+    },
+    "Austria": {
+      "best_xi_avg_rating": 78.5,
+      "best_xi_total_value_m": 300,
+      "formation_default": "4-2-3-1"
+    },
+    "Ecuador": {
+      "best_xi_avg_rating": 77.2,
+      "best_xi_total_value_m": 200,
+      "formation_default": "4-4-2"
+    },
+    "Egypt": {
+      "best_xi_avg_rating": 76.8,
+      "best_xi_total_value_m": 190,
+      "formation_default": "4-3-3"
+    },
+    "Norway": {
+      "best_xi_avg_rating": 79.5,
+      "best_xi_total_value_m": 400,
+      "formation_default": "4-3-3"
+    },
+    "Turkey": {
+      "best_xi_avg_rating": 77.5,
+      "best_xi_total_value_m": 250,
+      "formation_default": "4-2-3-1"
+    },
+    "Canada": {
+      "best_xi_avg_rating": 76.5,
+      "best_xi_total_value_m": 220,
+      "formation_default": "4-4-2"
+    },
+    "Australia": {
+      "best_xi_avg_rating": 76.2,
+      "best_xi_total_value_m": 180,
+      "formation_default": "4-3-3"
+    },
+    "Sweden": {
+      "best_xi_avg_rating": 77.8,
+      "best_xi_total_value_m": 260,
+      "formation_default": "4-4-2"
+    },
+    "Scotland": {
+      "best_xi_avg_rating": 76.5,
+      "best_xi_total_value_m": 230,
+      "formation_default": "3-4-3"
+    },
+    "Czechia": {
+      "best_xi_avg_rating": 77.0,
+      "best_xi_total_value_m": 240,
+      "formation_default": "4-2-3-1"
+    },
+    "Saudi Arabia": {
+      "best_xi_avg_rating": 74.5,
+      "best_xi_total_value_m": 120,
+      "formation_default": "4-4-2"
+    },
+    "Iran": {
+      "best_xi_avg_rating": 75.2,
+      "best_xi_total_value_m": 140,
+      "formation_default": "4-4-2"
+    },
+    "Iraq": {
+      "best_xi_avg_rating": 72.8,
+      "best_xi_total_value_m": 80,
+      "formation_default": "4-5-1"
+    },
+    "Jordan": {
+      "best_xi_avg_rating": 72.5,
+      "best_xi_total_value_m": 75,
+      "formation_default": "4-4-2"
+    },
+    "Uzbekistan": {
+      "best_xi_avg_rating": 73.2,
+      "best_xi_total_value_m": 90,
+      "formation_default": "4-4-2"
+    },
+    "Qatar": {
+      "best_xi_avg_rating": 74.0,
+      "best_xi_total_value_m": 100,
+      "formation_default": "4-3-3"
+    },
+    "Algeria": {
+      "best_xi_avg_rating": 77.0,
+      "best_xi_total_value_m": 210,
+      "formation_default": "4-3-3"
+    },
+    "Tunisia": {
+      "best_xi_avg_rating": 75.8,
+      "best_xi_total_value_m": 170,
+      "formation_default": "4-3-3"
+    },
+    "Ghana": {
+      "best_xi_avg_rating": 76.5,
+      "best_xi_total_value_m": 200,
+      "formation_default": "4-2-3-1"
+    },
+    "Ivory Coast": {
+      "best_xi_avg_rating": 78.2,
+      "best_xi_total_value_m": 270,
+      "formation_default": "4-3-3"
+    },
+    "Congo DR": {
+      "best_xi_avg_rating": 74.5,
+      "best_xi_total_value_m": 130,
+      "formation_default": "4-4-2"
+    },
+    "South Africa": {
+      "best_xi_avg_rating": 73.8,
+      "best_xi_total_value_m": 110,
+      "formation_default": "4-4-2"
+    },
+    "Panama": {
+      "best_xi_avg_rating": 72.2,
+      "best_xi_total_value_m": 60,
+      "formation_default": "5-4-1"
+    },
+    "Haiti": {
+      "best_xi_avg_rating": 71.5,
+      "best_xi_total_value_m": 50,
+      "formation_default": "4-5-1"
+    },
+    "New Zealand": {
+      "best_xi_avg_rating": 72.0,
+      "best_xi_total_value_m": 65,
+      "formation_default": "4-4-2"
+    },
+    "Cape Verde Islands": {
+      "best_xi_avg_rating": 73.5,
+      "best_xi_total_value_m": 95,
+      "formation_default": "4-3-3"
+    },
+    "Curaçao": {
+      "best_xi_avg_rating": 71.0,
+      "best_xi_total_value_m": 40,
+      "formation_default": "4-4-2"
+    },
+    "Paraguay": {
+      "best_xi_avg_rating": 77.2,
+      "best_xi_total_value_m": 200,
+      "formation_default": "4-4-2"
+    }
   }
 }
