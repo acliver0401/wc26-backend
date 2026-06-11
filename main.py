@@ -63,12 +63,14 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title="WC26 世界杯预测系统",
     description=(
-        "RandomForest + GradientBoosting + ExtraTrees + Logistic Ensemble "
-        "with Environmental Features (elevation / live weather / humidity / "
-        "precipitation / flight fatigue) and Injury/Form factors. "
+        "Bivariate Poisson goal model + weighted ensemble H/D/A "
+        "with Attacking Strength / Defensive Weakness coefficients, "
+        "tier-based sanity check (熔断机制), "
+        "live weather (Open-Meteo), injury simulation, "
+        "and environmental features. "
         "Data refreshed every 6 hours via APScheduler."
     ),
-    version="2.1.0",
+    version="3.0.0",
     lifespan=lifespan,
 )
 
