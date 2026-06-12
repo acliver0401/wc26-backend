@@ -1,12 +1,202 @@
 {
-  "updated_at": null,
+  "updated_at": "2026-06-12T02:36:58.965509Z",
   "cumulative": {
-    "total_matches": 0,
-    "correct_predictions": 0,
-    "accuracy": 0.0,
-    "total_stake": 0,
-    "total_return": 0,
-    "roi": 0.0
+    "total_matches": 7,
+    "correct_predictions": 4,
+    "accuracy": 0.5714,
+    "total_stake": 700,
+    "total_return": 685,
+    "roi": -0.0214
   },
-  "daily_records": []
+  "daily_records": [
+    {
+      "date": "2026-06-11",
+      "matches_evaluated": 1,
+      "correct_outcomes": 1,
+      "correct_scores": 0,
+      "daily_accuracy": 1.0,
+      "daily_roi": 0.6,
+      "matches": [
+        {
+          "home": "Mexico",
+          "away": "South Africa",
+          "predicted_outcome": "H",
+          "actual_outcome": "H",
+          "predicted_score": "4-0",
+          "actual_score": "1-0",
+          "outcome_correct": true,
+          "score_correct": false,
+          "ph": 62.6,
+          "pd": 34.4,
+          "pa": 2.9,
+          "bet_advice": "置信度高但需注意环境风险",
+          "stake": 100,
+          "return": 160,
+          "odds_used": 1.6
+        }
+      ]
+    },
+    {
+      "date": "2026-06-11",
+      "matches_evaluated": 1,
+      "correct_outcomes": 1,
+      "correct_scores": 0,
+      "daily_accuracy": 1.0,
+      "daily_roi": 0.75,
+      "matches": [
+        {
+          "home": "Mexico",
+          "away": "South Africa",
+          "predicted_outcome": "H",
+          "actual_outcome": "H",
+          "predicted_score": "3-0",
+          "actual_score": "1-0",
+          "outcome_correct": true,
+          "score_correct": false,
+          "ph": 57.1,
+          "pd": 34.8,
+          "pa": 8.0,
+          "bet_advice": "中等信心，环境变数较大",
+          "stake": 100,
+          "return": 175,
+          "odds_used": 1.75
+        }
+      ]
+    },
+    {
+      "date": "2026-06-11",
+      "matches_evaluated": 1,
+      "correct_outcomes": 1,
+      "correct_scores": 0,
+      "daily_accuracy": 1.0,
+      "daily_roi": 0.75,
+      "matches": [
+        {
+          "home": "Mexico",
+          "away": "South Africa",
+          "predicted_outcome": "H",
+          "actual_outcome": "H",
+          "predicted_score": "3-0",
+          "actual_score": "1-0",
+          "outcome_correct": true,
+          "score_correct": false,
+          "ph": 57.2,
+          "pd": 34.8,
+          "pa": 8.0,
+          "bet_advice": "中等信心，环境变数较大",
+          "stake": 100,
+          "return": 175,
+          "odds_used": 1.75
+        }
+      ]
+    },
+    {
+      "date": "2026-06-11",
+      "matches_evaluated": 1,
+      "correct_outcomes": 1,
+      "correct_scores": 0,
+      "daily_accuracy": 1.0,
+      "daily_roi": 0.75,
+      "matches": [
+        {
+          "home": "Mexico",
+          "away": "South Africa",
+          "predicted_outcome": "H",
+          "actual_outcome": "H",
+          "predicted_score": "3-0",
+          "actual_score": "0-1",
+          "outcome_correct": true,
+          "score_correct": false,
+          "ph": 57.2,
+          "pd": 34.8,
+          "pa": 8.0,
+          "bet_advice": "中等信心，环境变数较大",
+          "stake": 100,
+          "return": 175,
+          "odds_used": 1.75
+        }
+      ]
+    },
+    {
+      "date": "2026-06-11",
+      "matches_evaluated": 1,
+      "correct_outcomes": 0,
+      "correct_scores": 0,
+      "daily_accuracy": 0.0,
+      "daily_roi": -1.0,
+      "matches": [
+        {
+          "home": "Mexico",
+          "away": "South Africa",
+          "predicted_outcome": "H",
+          "actual_outcome": "D",
+          "predicted_score": "3-0",
+          "actual_score": "0-0",
+          "outcome_correct": false,
+          "score_correct": false,
+          "ph": 57.4,
+          "pd": 34.6,
+          "pa": 8.0,
+          "bet_advice": "中等信心，环境变数较大",
+          "stake": 100,
+          "return": 0,
+          "odds_used": 1.74
+        }
+      ]
+    },
+    {
+      "date": "2026-06-11",
+      "matches_evaluated": 1,
+      "correct_outcomes": 0,
+      "correct_scores": 0,
+      "daily_accuracy": 0.0,
+      "daily_roi": -1.0,
+      "matches": [
+        {
+          "home": "Mexico",
+          "away": "South Africa",
+          "predicted_outcome": "H",
+          "actual_outcome": "D",
+          "predicted_score": "3-0",
+          "actual_score": "1-1",
+          "outcome_correct": false,
+          "score_correct": false,
+          "ph": 57.2,
+          "pd": 34.8,
+          "pa": 8.0,
+          "bet_advice": "中等信心，环境变数较大",
+          "stake": 100,
+          "return": 0,
+          "odds_used": 1.75
+        }
+      ]
+    },
+    {
+      "date": "2026-06-11",
+      "matches_evaluated": 1,
+      "correct_outcomes": 0,
+      "correct_scores": 0,
+      "daily_accuracy": 0.0,
+      "daily_roi": -1.0,
+      "matches": [
+        {
+          "home": "Mexico",
+          "away": "South Africa",
+          "predicted_outcome": "H",
+          "actual_outcome": "D",
+          "predicted_score": "3-0",
+          "actual_score": "0-0",
+          "outcome_correct": false,
+          "score_correct": false,
+          "ph": 57.2,
+          "pd": 34.8,
+          "pa": 8.0,
+          "bet_advice": "中等信心，环境变数较大",
+          "stake": 100,
+          "return": 0,
+          "odds_used": 1.75
+        }
+      ]
+    }
+  ]
 }

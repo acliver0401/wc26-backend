@@ -1,8 +1,8 @@
 """
-Live Lineup Fetcher & Feature Engineering — v4.1.0.
+Live Lineup Fetcher & Feature Engineering — v5.0.0.
 
 High-frequency polling (every 5 min, T-75min to kickoff) for official
-starting XIs via API-SPORTS / Dongqiudi with player_db fallback. Once a
+starting XIs via Flashscore → Zafronix → player_db fallback. Once a
 lineup is captured, the system transitions from "Pre-Match" to "Live-Lineup"
 status and computes three correction multipliers that feed the Poisson
 predictor:
@@ -17,7 +17,9 @@ If all sources fail and player_db is missing the squad, the match stays in
 
 Architecture:
   lineup_fetcher.py  (this file)   — polling + feature engineering
-  services/lineup_api.py           — API-SPORTS / Dongqiudi client (v4.1.0)
+  services/lineup_api.py           — Flashscore / Zafronix client (v5.0.0)
+  services/flashscore_scraper.py   — Flashscore internal JSON API scraper
+  services/zafronix_api.py         — Zafronix World Cup API client
   models/predictor.py              — applies multipliers to λ_home / λ_away
   services/scheduler.py            — manages poll job lifecycle
   data/player_db.json              — 48-team squad rosters with ratings & style tags
@@ -508,11 +510,11 @@ async def fetch_match_lineup(
     stadium_id: str = "",
 ) -> dict | None:
     """
-    Fetch official starting lineups — API-first with player_db fallback.
+    Fetch official starting lineups — remote-first with player_db fallback.
 
-    v4.1.0 priority:
+    v5.0.0 priority:
       1. Check if lineups are already cached.
-      2. Try API-SPORTS (api-football.com v3), then Dongqiudi.
+      2. Try Flashscore (free internal JSON API), then Zafronix.
       3. On success: backfill ratings from player_db.json, cache, return.
       4. On LineupNotAvailable: log, return None (stay Pre-Match).
       5. On API error: fall back to player_db simulation.
@@ -548,8 +550,8 @@ async def fetch_match_lineup(
         _logger.debug("Match %s is in the past, skipping", match_key)
         return None
 
-    # ── v4.1.0: API-first path ──────────────────────────────────────────
-    _logger.info("Fetching lineup for %s via API (%.0f min to kickoff)", match_key, minutes_to_kickoff)
+    # ── v5.0.0: Flashscore → Zafronix → player_db path ─────────────────
+    _logger.info("Fetching lineup for %s via remote sources (%.0f min to kickoff)", match_key, minutes_to_kickoff)
 
     # Lazy-import to keep the module loadable without aiohttp installed
     try:

@@ -1,0 +1,2225 @@
+{
+  "updated_at": "2026-06-12T00:00:00Z",
+  "matches": {
+    "2026-06-12_Canada_Bosnia and Herzegovina": {
+      "home_team": "Canada",
+      "away_team": "Bosnia & Herzegovina",
+      "commence_time": "2026-06-12T19:00:00Z",
+      "bookmaker_count": 29,
+      "h2h": {
+        "home": 1.87,
+        "away": 5.1,
+        "draw": 3.65
+      },
+      "spreads": {
+        "home_price": 1.86,
+        "away_price": 2.12,
+        "home_point": -0.5,
+        "away_point": 0.5
+      },
+      "totals": {
+        "over": 2.32,
+        "under": 2.2,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 53.2,
+        "away": 19.5,
+        "draw": 27.3
+      }
+    },
+    "2026-06-13_United States_Paraguay": {
+      "home_team": "USA",
+      "away_team": "Paraguay",
+      "commence_time": "2026-06-13T01:00:00Z",
+      "bookmaker_count": 29,
+      "h2h": {
+        "home": 2.14,
+        "away": 4.2,
+        "draw": 3.4
+      },
+      "spreads": {
+        "home_price": 2.14,
+        "away_price": 1.87,
+        "home_point": -0.5,
+        "away_point": 0.5
+      },
+      "totals": {
+        "over": 2.4,
+        "under": 2.02,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 46.8,
+        "away": 23.8,
+        "draw": 29.4
+      }
+    },
+    "2026-06-13_Qatar_Switzerland": {
+      "home_team": "Qatar",
+      "away_team": "Switzerland",
+      "commence_time": "2026-06-13T19:00:00Z",
+      "bookmaker_count": 29,
+      "h2h": {
+        "home": 17.51,
+        "away": 1.24,
+        "draw": 7.2
+      },
+      "spreads": {
+        "home_price": 2.3,
+        "away_price": 2.25,
+        "home_point": 1.5,
+        "away_point": -1.5
+      },
+      "totals": {
+        "over": 2.15,
+        "under": 2.23,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 5.7,
+        "away": 80.4,
+        "draw": 13.9
+      }
+    },
+    "2026-06-13_Brazil_Morocco": {
+      "home_team": "Brazil",
+      "away_team": "Morocco",
+      "commence_time": "2026-06-13T22:00:00Z",
+      "bookmaker_count": 29,
+      "h2h": {
+        "home": 1.7,
+        "away": 6.0,
+        "draw": 4.0
+      },
+      "spreads": {
+        "home_price": 2.13,
+        "away_price": 2.3,
+        "home_point": -0.75,
+        "away_point": 0.75
+      },
+      "totals": {
+        "over": 2.1,
+        "under": 2.02,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 58.5,
+        "away": 16.6,
+        "draw": 24.9
+      }
+    },
+    "2026-06-14_Haiti_Scotland": {
+      "home_team": "Haiti",
+      "away_team": "Scotland",
+      "commence_time": "2026-06-14T01:00:00Z",
+      "bookmaker_count": 29,
+      "h2h": {
+        "home": 6.2,
+        "away": 1.62,
+        "draw": 4.4
+      },
+      "spreads": {
+        "home_price": 1.91,
+        "away_price": 2.06,
+        "home_point": 1.0,
+        "away_point": -1.0
+      },
+      "totals": {
+        "over": 1.96,
+        "under": 2.02,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 16.0,
+        "away": 61.4,
+        "draw": 22.6
+      }
+    },
+    "2026-06-14_Australia_Turkey": {
+      "home_team": "Australia",
+      "away_team": "Turkey",
+      "commence_time": "2026-06-14T04:00:00Z",
+      "bookmaker_count": 29,
+      "h2h": {
+        "home": 5.6,
+        "away": 1.75,
+        "draw": 3.95
+      },
+      "spreads": {
+        "home_price": 2.25,
+        "away_price": 1.98,
+        "home_point": 0.5,
+        "away_point": -0.5
+      },
+      "totals": {
+        "over": 2.05,
+        "under": 1.85,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 17.8,
+        "away": 57.0,
+        "draw": 25.2
+      }
+    },
+    "2026-06-14_Germany_Curaçao": {
+      "home_team": "Germany",
+      "away_team": "Curaçao",
+      "commence_time": "2026-06-14T17:00:00Z",
+      "bookmaker_count": 29,
+      "h2h": {
+        "home": 1.06,
+        "away": 46.0,
+        "draw": 25.0
+      },
+      "spreads": {
+        "home_price": 2.05,
+        "away_price": 2.08,
+        "home_point": -3.5,
+        "away_point": 3.5
+      },
+      "totals": {
+        "over": 2.2,
+        "under": 4.5,
+        "point": 4.5
+      },
+      "implied_probs": {
+        "home": 93.9,
+        "away": 2.2,
+        "draw": 4.0
+      }
+    },
+    "2026-06-14_Netherlands_Japan": {
+      "home_team": "Netherlands",
+      "away_team": "Japan",
+      "commence_time": "2026-06-14T20:00:00Z",
+      "bookmaker_count": 29,
+      "h2h": {
+        "home": 2.05,
+        "away": 4.0,
+        "draw": 3.7
+      },
+      "spreads": {
+        "home_price": 2.04,
+        "away_price": 1.93,
+        "home_point": -0.5,
+        "away_point": 0.5
+      },
+      "totals": {
+        "over": 2.02,
+        "under": 1.96,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 48.4,
+        "away": 24.8,
+        "draw": 26.8
+      }
+    },
+    "2026-06-14_Côte d'Ivoire_Ecuador": {
+      "home_team": "Ivory Coast",
+      "away_team": "Ecuador",
+      "commence_time": "2026-06-14T23:00:00Z",
+      "bookmaker_count": 29,
+      "h2h": {
+        "home": 3.7,
+        "away": 2.56,
+        "draw": 2.92
+      },
+      "spreads": {
+        "home_price": 1.88,
+        "away_price": 2.45,
+        "home_point": 0.25,
+        "away_point": -0.25
+      },
+      "totals": {
+        "over": 2.62,
+        "under": 2.38,
+        "point": 1.5
+      },
+      "implied_probs": {
+        "home": 26.9,
+        "away": 38.9,
+        "draw": 34.1
+      }
+    },
+    "2026-06-15_Sweden_Tunisia": {
+      "home_team": "Sweden",
+      "away_team": "Tunisia",
+      "commence_time": "2026-06-15T02:00:00Z",
+      "bookmaker_count": 28,
+      "h2h": {
+        "home": 1.94,
+        "away": 4.7,
+        "draw": 3.65
+      },
+      "spreads": {
+        "home_price": 1.94,
+        "away_price": 2.04,
+        "home_point": -0.5,
+        "away_point": 0.5
+      },
+      "totals": {
+        "over": 2.25,
+        "under": 2.24,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 51.4,
+        "away": 21.2,
+        "draw": 27.3
+      }
+    },
+    "2026-06-15_Spain_Cape Verde": {
+      "home_team": "Spain",
+      "away_team": "Cape Verde",
+      "commence_time": "2026-06-15T16:00:00Z",
+      "bookmaker_count": 28,
+      "h2h": {
+        "home": 1.1,
+        "away": 32.0,
+        "draw": 15.0
+      },
+      "spreads": {
+        "home_price": 1.95,
+        "away_price": 2.02,
+        "home_point": -2.5,
+        "away_point": 2.5
+      },
+      "totals": {
+        "over": 2.04,
+        "under": 3.1,
+        "point": 3.5
+      },
+      "implied_probs": {
+        "home": 90.3,
+        "away": 3.1,
+        "draw": 6.6
+      }
+    },
+    "2026-06-15_Belgium_Egypt": {
+      "home_team": "Belgium",
+      "away_team": "Egypt",
+      "commence_time": "2026-06-15T19:00:00Z",
+      "bookmaker_count": 28,
+      "h2h": {
+        "home": 1.66,
+        "away": 6.2,
+        "draw": 4.1
+      },
+      "spreads": {
+        "home_price": 2.14,
+        "away_price": 2.14,
+        "home_point": -1.0,
+        "away_point": 1.0
+      },
+      "totals": {
+        "over": 2.06,
+        "under": 1.92,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 59.8,
+        "away": 16.0,
+        "draw": 24.2
+      }
+    },
+    "2026-06-15_Saudi Arabia_Uruguay": {
+      "home_team": "Saudi Arabia",
+      "away_team": "Uruguay",
+      "commence_time": "2026-06-15T22:00:00Z",
+      "bookmaker_count": 28,
+      "h2h": {
+        "home": 8.8,
+        "away": 1.47,
+        "draw": 4.7
+      },
+      "spreads": {
+        "home_price": 2.24,
+        "away_price": 2.06,
+        "home_point": 1.25,
+        "away_point": -1.25
+      },
+      "totals": {
+        "over": 2.05,
+        "under": 1.85,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 11.3,
+        "away": 67.6,
+        "draw": 21.1
+      }
+    },
+    "2026-06-16_Iran_New Zealand": {
+      "home_team": "Iran",
+      "away_team": "New Zealand",
+      "commence_time": "2026-06-16T01:00:00Z",
+      "bookmaker_count": 28,
+      "h2h": {
+        "home": 1.88,
+        "away": 5.0,
+        "draw": 3.6
+      },
+      "spreads": {
+        "home_price": 1.88,
+        "away_price": 2.12,
+        "home_point": -0.5,
+        "away_point": 0.5
+      },
+      "totals": {
+        "over": 2.4,
+        "under": 2.17,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 52.7,
+        "away": 19.8,
+        "draw": 27.5
+      }
+    },
+    "2026-06-16_France_Senegal": {
+      "home_team": "France",
+      "away_team": "Senegal",
+      "commence_time": "2026-06-16T19:00:00Z",
+      "bookmaker_count": 28,
+      "h2h": {
+        "home": 1.51,
+        "away": 8.0,
+        "draw": 4.6
+      },
+      "spreads": {
+        "home_price": 1.87,
+        "away_price": 2.1,
+        "home_point": -1.0,
+        "away_point": 1.0
+      },
+      "totals": {
+        "over": 2.02,
+        "under": 1.96,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 65.9,
+        "away": 12.4,
+        "draw": 21.6
+      }
+    },
+    "2026-06-16_Iraq_Norway": {
+      "home_team": "Iraq",
+      "away_team": "Norway",
+      "commence_time": "2026-06-16T22:00:00Z",
+      "bookmaker_count": 28,
+      "h2h": {
+        "home": 16.5,
+        "away": 1.23,
+        "draw": 7.6
+      },
+      "spreads": {
+        "home_price": 1.85,
+        "away_price": 2.12,
+        "home_point": 2.0,
+        "away_point": -2.0
+      },
+      "totals": {
+        "over": 2.32,
+        "under": 2.4,
+        "point": 3.5
+      },
+      "implied_probs": {
+        "home": 6.0,
+        "away": 80.9,
+        "draw": 13.1
+      }
+    },
+    "2026-06-17_Argentina_Algeria": {
+      "home_team": "Argentina",
+      "away_team": "Algeria",
+      "commence_time": "2026-06-17T01:00:00Z",
+      "bookmaker_count": 27,
+      "h2h": {
+        "home": 1.41,
+        "away": 10.0,
+        "draw": 4.9
+      },
+      "spreads": {
+        "home_price": 2.21,
+        "away_price": 2.0,
+        "home_point": -1.25,
+        "away_point": 1.25
+      },
+      "totals": {
+        "over": 2.02,
+        "under": 1.97,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 70.0,
+        "away": 9.9,
+        "draw": 20.1
+      }
+    },
+    "2026-06-17_Austria_Jordan": {
+      "home_team": "Austria",
+      "away_team": "Jordan",
+      "commence_time": "2026-06-17T04:00:00Z",
+      "bookmaker_count": 27,
+      "h2h": {
+        "home": 1.35,
+        "away": 10.0,
+        "draw": 5.9
+      },
+      "spreads": {
+        "home_price": 2.0,
+        "away_price": 1.96,
+        "home_point": -1.5,
+        "away_point": 1.5
+      },
+      "totals": {
+        "over": 2.1,
+        "under": 2.32,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 73.3,
+        "away": 9.9,
+        "draw": 16.8
+      }
+    },
+    "2026-06-17_Portugal_Congo DR": {
+      "home_team": "Portugal",
+      "away_team": "DR Congo",
+      "commence_time": "2026-06-17T17:00:00Z",
+      "bookmaker_count": 27,
+      "h2h": {
+        "home": 1.32,
+        "away": 13.0,
+        "draw": 6.0
+      },
+      "spreads": {
+        "home_price": 1.93,
+        "away_price": 2.04,
+        "home_point": -1.5,
+        "away_point": 1.5
+      },
+      "totals": {
+        "over": 1.89,
+        "under": 2.22,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 75.7,
+        "away": 7.7,
+        "draw": 16.6
+      }
+    },
+    "2026-06-17_England_Croatia": {
+      "home_team": "England",
+      "away_team": "Croatia",
+      "commence_time": "2026-06-17T20:00:00Z",
+      "bookmaker_count": 27,
+      "h2h": {
+        "home": 1.77,
+        "away": 5.4,
+        "draw": 3.95
+      },
+      "spreads": {
+        "home_price": 2.45,
+        "away_price": 2.16,
+        "home_point": -0.75,
+        "away_point": 0.75
+      },
+      "totals": {
+        "over": 2.26,
+        "under": 1.93,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 56.3,
+        "away": 18.5,
+        "draw": 25.2
+      }
+    },
+    "2026-06-17_Ghana_Panama": {
+      "home_team": "Ghana",
+      "away_team": "Panama",
+      "commence_time": "2026-06-17T23:00:00Z",
+      "bookmaker_count": 27,
+      "h2h": {
+        "home": 2.24,
+        "away": 3.65,
+        "draw": 3.52
+      },
+      "spreads": {
+        "home_price": 2.13,
+        "away_price": 2.06,
+        "home_point": -0.25,
+        "away_point": 0.25
+      },
+      "totals": {
+        "over": 2.36,
+        "under": 2.23,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 44.4,
+        "away": 27.3,
+        "draw": 28.3
+      }
+    },
+    "2026-06-18_Uzbekistan_Colombia": {
+      "home_team": "Uzbekistan",
+      "away_team": "Colombia",
+      "commence_time": "2026-06-18T02:00:00Z",
+      "bookmaker_count": 27,
+      "h2h": {
+        "home": 10.5,
+        "away": 1.41,
+        "draw": 4.9
+      },
+      "spreads": {
+        "home_price": 2.39,
+        "away_price": 2.2,
+        "home_point": 1.25,
+        "away_point": -1.25
+      },
+      "totals": {
+        "over": 2.0,
+        "under": 1.94,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 9.4,
+        "away": 70.3,
+        "draw": 20.2
+      }
+    },
+    "2026-06-18_Czechia_South Africa": {
+      "home_team": "Czech Republic",
+      "away_team": "South Africa",
+      "commence_time": "2026-06-18T16:00:00Z",
+      "bookmaker_count": 26,
+      "h2h": {
+        "home": 1.75,
+        "away": 5.5,
+        "draw": 4.09
+      },
+      "spreads": {
+        "home_price": 2.36,
+        "away_price": 2.13,
+        "home_point": -1.0,
+        "away_point": 1.0
+      },
+      "totals": {
+        "over": 2.2,
+        "under": 1.93,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 57.3,
+        "away": 18.2,
+        "draw": 24.5
+      }
+    },
+    "2026-06-18_Switzerland_Bosnia and Herzegovina": {
+      "home_team": "Switzerland",
+      "away_team": "Bosnia & Herzegovina",
+      "commence_time": "2026-06-18T19:00:00Z",
+      "bookmaker_count": 27,
+      "h2h": {
+        "home": 1.64,
+        "away": 6.2,
+        "draw": 4.2
+      },
+      "spreads": {
+        "home_price": 2.12,
+        "away_price": 1.85,
+        "home_point": -1.0,
+        "away_point": 1.0
+      },
+      "totals": {
+        "over": 2.14,
+        "under": 2.05,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 60.4,
+        "away": 16.0,
+        "draw": 23.6
+      }
+    },
+    "2026-06-18_Canada_Qatar": {
+      "home_team": "Canada",
+      "away_team": "Qatar",
+      "commence_time": "2026-06-18T22:00:00Z",
+      "bookmaker_count": 27,
+      "h2h": {
+        "home": 1.33,
+        "away": 12.5,
+        "draw": 5.7
+      },
+      "spreads": {
+        "home_price": 2.02,
+        "away_price": 1.93,
+        "home_point": -1.5,
+        "away_point": 1.5
+      },
+      "totals": {
+        "over": 1.99,
+        "under": 1.94,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 74.6,
+        "away": 7.9,
+        "draw": 17.4
+      }
+    },
+    "2026-06-19_Mexico_South Korea": {
+      "home_team": "Mexico",
+      "away_team": "South Korea",
+      "commence_time": "2026-06-19T01:00:00Z",
+      "bookmaker_count": 26,
+      "h2h": {
+        "home": 2.06,
+        "away": 4.23,
+        "draw": 3.45
+      },
+      "spreads": {
+        "home_price": 2.06,
+        "away_price": 1.92,
+        "home_point": -0.5,
+        "away_point": 0.5
+      },
+      "totals": {
+        "over": 2.45,
+        "under": 2.1,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 48.0,
+        "away": 23.4,
+        "draw": 28.7
+      }
+    },
+    "2026-06-19_United States_Australia": {
+      "home_team": "USA",
+      "away_team": "Australia",
+      "commence_time": "2026-06-19T19:00:00Z",
+      "bookmaker_count": 27,
+      "h2h": {
+        "home": 1.79,
+        "away": 5.0,
+        "draw": 4.0
+      },
+      "spreads": {
+        "home_price": 1.95,
+        "away_price": 2.14,
+        "home_point": -0.5,
+        "away_point": 0.5
+      },
+      "totals": {
+        "over": 2.12,
+        "under": 1.82,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 55.4,
+        "away": 19.8,
+        "draw": 24.8
+      }
+    },
+    "2026-06-19_Scotland_Morocco": {
+      "home_team": "Scotland",
+      "away_team": "Morocco",
+      "commence_time": "2026-06-19T22:00:00Z",
+      "bookmaker_count": 27,
+      "h2h": {
+        "home": 4.4,
+        "away": 2.0,
+        "draw": 3.5
+      },
+      "spreads": {
+        "home_price": 1.85,
+        "away_price": 2.03,
+        "home_point": 0.5,
+        "away_point": -0.5
+      },
+      "totals": {
+        "over": 2.25,
+        "under": 2.3,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 22.4,
+        "away": 49.4,
+        "draw": 28.2
+      }
+    },
+    "2026-06-20_Brazil_Haiti": {
+      "home_team": "Brazil",
+      "away_team": "Haiti",
+      "commence_time": "2026-06-20T01:00:00Z",
+      "bookmaker_count": 26,
+      "h2h": {
+        "home": 1.09,
+        "away": 34.0,
+        "draw": 15.0
+      },
+      "spreads": {
+        "home_price": 2.27,
+        "away_price": 1.98,
+        "home_point": -3.0,
+        "away_point": 3.0
+      },
+      "totals": {
+        "over": 2.28,
+        "under": 3.5,
+        "point": 3.5
+      },
+      "implied_probs": {
+        "home": 90.5,
+        "away": 2.9,
+        "draw": 6.6
+      }
+    },
+    "2026-06-20_Turkey_Paraguay": {
+      "home_team": "Turkey",
+      "away_team": "Paraguay",
+      "commence_time": "2026-06-20T03:00:00Z",
+      "bookmaker_count": 26,
+      "h2h": {
+        "home": 2.28,
+        "away": 3.55,
+        "draw": 3.3
+      },
+      "spreads": {
+        "home_price": 2.22,
+        "away_price": 1.95,
+        "home_point": -0.5,
+        "away_point": 0.5
+      },
+      "totals": {
+        "over": 2.35,
+        "under": 2.08,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 42.9,
+        "away": 27.5,
+        "draw": 29.6
+      }
+    },
+    "2026-06-20_Netherlands_Sweden": {
+      "home_team": "Netherlands",
+      "away_team": "Sweden",
+      "commence_time": "2026-06-20T17:00:00Z",
+      "bookmaker_count": 26,
+      "h2h": {
+        "home": 1.69,
+        "away": 5.4,
+        "draw": 4.2
+      },
+      "spreads": {
+        "home_price": 2.17,
+        "away_price": 1.8,
+        "home_point": -1.0,
+        "away_point": 1.0
+      },
+      "totals": {
+        "over": 2.0,
+        "under": 1.91,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 58.3,
+        "away": 18.2,
+        "draw": 23.5
+      }
+    },
+    "2026-06-20_Germany_Côte d'Ivoire": {
+      "home_team": "Germany",
+      "away_team": "Ivory Coast",
+      "commence_time": "2026-06-20T20:00:00Z",
+      "bookmaker_count": 26,
+      "h2h": {
+        "home": 1.56,
+        "away": 6.25,
+        "draw": 4.8
+      },
+      "spreads": {
+        "home_price": 1.95,
+        "away_price": 1.94,
+        "home_point": -1.0,
+        "away_point": 1.0
+      },
+      "totals": {
+        "over": 1.98,
+        "under": 2.09,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 63.5,
+        "away": 15.9,
+        "draw": 20.6
+      }
+    },
+    "2026-06-21_Ecuador_Curaçao": {
+      "home_team": "Ecuador",
+      "away_team": "Curaçao",
+      "commence_time": "2026-06-21T00:00:00Z",
+      "bookmaker_count": 26,
+      "h2h": {
+        "home": 1.25,
+        "away": 17.0,
+        "draw": 7.5
+      },
+      "spreads": {
+        "home_price": 2.05,
+        "away_price": 2.42,
+        "home_point": -2.0,
+        "away_point": 2.0
+      },
+      "totals": {
+        "over": 2.06,
+        "under": 2.33,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 80.6,
+        "away": 5.9,
+        "draw": 13.4
+      }
+    },
+    "2026-06-21_Tunisia_Japan": {
+      "home_team": "Tunisia",
+      "away_team": "Japan",
+      "commence_time": "2026-06-21T04:00:00Z",
+      "bookmaker_count": 26,
+      "h2h": {
+        "home": 5.8,
+        "away": 1.75,
+        "draw": 3.7
+      },
+      "spreads": {
+        "home_price": 2.23,
+        "away_price": 1.89,
+        "home_point": 0.5,
+        "away_point": -0.5
+      },
+      "totals": {
+        "over": 2.3,
+        "under": 2.33,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 17.0,
+        "away": 56.3,
+        "draw": 26.7
+      }
+    },
+    "2026-06-21_Spain_Saudi Arabia": {
+      "home_team": "Spain",
+      "away_team": "Saudi Arabia",
+      "commence_time": "2026-06-21T16:00:00Z",
+      "bookmaker_count": 26,
+      "h2h": {
+        "home": 1.13,
+        "away": 29.0,
+        "draw": 11.0
+      },
+      "spreads": {
+        "home_price": 2.12,
+        "away_price": 1.83,
+        "home_point": -2.5,
+        "away_point": 2.5
+      },
+      "totals": {
+        "over": 2.2,
+        "under": 2.5,
+        "point": 3.5
+      },
+      "implied_probs": {
+        "home": 87.6,
+        "away": 3.4,
+        "draw": 9.0
+      }
+    },
+    "2026-06-21_Belgium_Iran": {
+      "home_team": "Belgium",
+      "away_team": "Iran",
+      "commence_time": "2026-06-21T19:00:00Z",
+      "bookmaker_count": 26,
+      "h2h": {
+        "home": 1.44,
+        "away": 9.0,
+        "draw": 4.8
+      },
+      "spreads": {
+        "home_price": 2.32,
+        "away_price": 1.89,
+        "home_point": -1.5,
+        "away_point": 1.5
+      },
+      "totals": {
+        "over": 1.88,
+        "under": 1.98,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 68.5,
+        "away": 11.0,
+        "draw": 20.5
+      }
+    },
+    "2026-06-21_Uruguay_Cape Verde": {
+      "home_team": "Uruguay",
+      "away_team": "Cape Verde",
+      "commence_time": "2026-06-21T22:00:00Z",
+      "bookmaker_count": 26,
+      "h2h": {
+        "home": 1.45,
+        "away": 8.0,
+        "draw": 4.7
+      },
+      "spreads": {
+        "home_price": 2.02,
+        "away_price": 2.18,
+        "home_point": -1.0,
+        "away_point": 1.0
+      },
+      "totals": {
+        "over": 2.02,
+        "under": 1.93,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 67.1,
+        "away": 12.2,
+        "draw": 20.7
+      }
+    },
+    "2026-06-22_New Zealand_Egypt": {
+      "home_team": "New Zealand",
+      "away_team": "Egypt",
+      "commence_time": "2026-06-22T01:00:00Z",
+      "bookmaker_count": 26,
+      "h2h": {
+        "home": 5.2,
+        "away": 1.8,
+        "draw": 3.9
+      },
+      "spreads": {
+        "home_price": 2.14,
+        "away_price": 1.98,
+        "home_point": 0.5,
+        "away_point": -0.5
+      },
+      "totals": {
+        "over": 2.32,
+        "under": 2.12,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 19.1,
+        "away": 55.3,
+        "draw": 25.5
+      }
+    },
+    "2026-06-22_Argentina_Austria": {
+      "home_team": "Argentina",
+      "away_team": "Austria",
+      "commence_time": "2026-06-22T17:00:00Z",
+      "bookmaker_count": 26,
+      "h2h": {
+        "home": 1.67,
+        "away": 5.8,
+        "draw": 4.2
+      },
+      "spreads": {
+        "home_price": 2.17,
+        "away_price": 2.05,
+        "home_point": -1.0,
+        "away_point": 1.0
+      },
+      "totals": {
+        "over": 2.01,
+        "under": 1.87,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 59.3,
+        "away": 17.1,
+        "draw": 23.6
+      }
+    },
+    "2026-06-22_France_Iraq": {
+      "home_team": "France",
+      "away_team": "Iraq",
+      "commence_time": "2026-06-22T21:00:00Z",
+      "bookmaker_count": 26,
+      "h2h": {
+        "home": 1.13,
+        "away": 30.0,
+        "draw": 10.0
+      },
+      "spreads": {
+        "home_price": 2.08,
+        "away_price": 1.82,
+        "home_point": -2.5,
+        "away_point": 2.5
+      },
+      "totals": {
+        "over": 2.2,
+        "under": 2.5,
+        "point": 3.5
+      },
+      "implied_probs": {
+        "home": 86.9,
+        "away": 3.3,
+        "draw": 9.8
+      }
+    },
+    "2026-06-23_Norway_Senegal": {
+      "home_team": "Norway",
+      "away_team": "Senegal",
+      "commence_time": "2026-06-23T00:00:00Z",
+      "bookmaker_count": 26,
+      "h2h": {
+        "home": 2.24,
+        "away": 3.4,
+        "draw": 3.6
+      },
+      "spreads": {
+        "home_price": 2.18,
+        "away_price": 2.0,
+        "home_point": -0.5,
+        "away_point": 0.5
+      },
+      "totals": {
+        "over": 1.99,
+        "under": 1.87,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 43.8,
+        "away": 28.9,
+        "draw": 27.3
+      }
+    },
+    "2026-06-23_Jordan_Algeria": {
+      "home_team": "Jordan",
+      "away_team": "Algeria",
+      "commence_time": "2026-06-23T03:00:00Z",
+      "bookmaker_count": 26,
+      "h2h": {
+        "home": 7.0,
+        "away": 1.54,
+        "draw": 4.6
+      },
+      "spreads": {
+        "home_price": 1.98,
+        "away_price": 1.96,
+        "home_point": 1.0,
+        "away_point": -1.0
+      },
+      "totals": {
+        "over": 1.98,
+        "under": 1.91,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 14.1,
+        "away": 64.3,
+        "draw": 21.5
+      }
+    },
+    "2026-06-23_Portugal_Uzbekistan": {
+      "home_team": "Portugal",
+      "away_team": "Uzbekistan",
+      "commence_time": "2026-06-23T17:00:00Z",
+      "bookmaker_count": 26,
+      "h2h": {
+        "home": 1.26,
+        "away": 12.5,
+        "draw": 6.95
+      },
+      "spreads": {
+        "home_price": 1.93,
+        "away_price": 2.17,
+        "home_point": -1.5,
+        "away_point": 1.5
+      },
+      "totals": {
+        "over": 2.33,
+        "under": 2.45,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 78.0,
+        "away": 7.9,
+        "draw": 14.1
+      }
+    },
+    "2026-06-23_England_Ghana": {
+      "home_team": "England",
+      "away_team": "Ghana",
+      "commence_time": "2026-06-23T20:00:00Z",
+      "bookmaker_count": 26,
+      "h2h": {
+        "home": 1.35,
+        "away": 10.5,
+        "draw": 5.7
+      },
+      "spreads": {
+        "home_price": 1.89,
+        "away_price": 1.98,
+        "home_point": -1.5,
+        "away_point": 1.5
+      },
+      "totals": {
+        "over": 1.89,
+        "under": 2.28,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 73.2,
+        "away": 9.4,
+        "draw": 17.3
+      }
+    },
+    "2026-06-23_Panama_Croatia": {
+      "home_team": "Panama",
+      "away_team": "Croatia",
+      "commence_time": "2026-06-23T23:00:00Z",
+      "bookmaker_count": 26,
+      "h2h": {
+        "home": 7.2,
+        "away": 1.57,
+        "draw": 4.2
+      },
+      "spreads": {
+        "home_price": 1.87,
+        "away_price": 2.01,
+        "home_point": 1.0,
+        "away_point": -1.0
+      },
+      "totals": {
+        "over": 2.17,
+        "under": 2.02,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 13.7,
+        "away": 62.8,
+        "draw": 23.5
+      }
+    },
+    "2026-06-24_Colombia_Congo DR": {
+      "home_team": "Colombia",
+      "away_team": "DR Congo",
+      "commence_time": "2026-06-24T02:00:00Z",
+      "bookmaker_count": 26,
+      "h2h": {
+        "home": 1.5,
+        "away": 8.0,
+        "draw": 4.42
+      },
+      "spreads": {
+        "home_price": 1.79,
+        "away_price": 2.1,
+        "home_point": -1.0,
+        "away_point": 1.0
+      },
+      "totals": {
+        "over": 2.3,
+        "under": 1.91,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 65.5,
+        "away": 12.3,
+        "draw": 22.2
+      }
+    },
+    "2026-06-24_Bosnia and Herzegovina_Qatar": {
+      "home_team": "Bosnia & Herzegovina",
+      "away_team": "Qatar",
+      "commence_time": "2026-06-24T19:00:00Z",
+      "bookmaker_count": 24,
+      "h2h": {
+        "home": 1.66,
+        "away": 6.1,
+        "draw": 4.0
+      },
+      "spreads": {
+        "home_price": 2.07,
+        "away_price": 1.98,
+        "home_point": -1.0,
+        "away_point": 1.0
+      },
+      "totals": {
+        "over": 2.08,
+        "under": 1.98,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 59.3,
+        "away": 16.1,
+        "draw": 24.6
+      }
+    },
+    "2026-06-24_Switzerland_Canada": {
+      "home_team": "Switzerland",
+      "away_team": "Canada",
+      "commence_time": "2026-06-24T19:00:00Z",
+      "bookmaker_count": 24,
+      "h2h": {
+        "home": 2.26,
+        "away": 3.6,
+        "draw": 3.45
+      },
+      "spreads": {
+        "home_price": 2.04,
+        "away_price": 2.05,
+        "home_point": -0.25,
+        "away_point": 0.25
+      },
+      "totals": {
+        "over": 2.08,
+        "under": 1.99,
+        "point": 2.25
+      },
+      "implied_probs": {
+        "home": 43.8,
+        "away": 27.5,
+        "draw": 28.7
+      }
+    },
+    "2026-06-24_Scotland_Brazil": {
+      "home_team": "Scotland",
+      "away_team": "Brazil",
+      "commence_time": "2026-06-24T22:00:00Z",
+      "bookmaker_count": 24,
+      "h2h": {
+        "home": 7.5,
+        "away": 1.48,
+        "draw": 5.1
+      },
+      "spreads": {
+        "home_price": 2.08,
+        "away_price": 2.05,
+        "home_point": 1.25,
+        "away_point": -1.25
+      },
+      "totals": {
+        "over": 1.86,
+        "under": 2.0,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 13.3,
+        "away": 67.2,
+        "draw": 19.5
+      }
+    },
+    "2026-06-24_Morocco_Haiti": {
+      "home_team": "Morocco",
+      "away_team": "Haiti",
+      "commence_time": "2026-06-24T22:00:00Z",
+      "bookmaker_count": 24,
+      "h2h": {
+        "home": 1.34,
+        "away": 11.25,
+        "draw": 5.6
+      },
+      "spreads": {
+        "home_price": 1.99,
+        "away_price": 1.87,
+        "home_point": -1.5,
+        "away_point": 1.5
+      },
+      "totals": {
+        "over": 1.98,
+        "under": 2.08,
+        "point": 2.75
+      },
+      "implied_probs": {
+        "home": 73.6,
+        "away": 8.8,
+        "draw": 17.6
+      }
+    },
+    "2026-06-25_Czechia_Mexico": {
+      "home_team": "Czech Republic",
+      "away_team": "Mexico",
+      "commence_time": "2026-06-25T01:00:00Z",
+      "bookmaker_count": 22,
+      "h2h": {
+        "home": 4.83,
+        "away": 1.85,
+        "draw": 3.6
+      },
+      "spreads": {
+        "home_price": 2.02,
+        "away_price": 2.05,
+        "home_point": 0.75,
+        "away_point": -0.75
+      },
+      "totals": {
+        "over": 2.07,
+        "under": 2.01,
+        "point": 2.25
+      },
+      "implied_probs": {
+        "home": 20.2,
+        "away": 52.7,
+        "draw": 27.1
+      }
+    },
+    "2026-06-25_South Africa_South Korea": {
+      "home_team": "South Africa",
+      "away_team": "South Korea",
+      "commence_time": "2026-06-25T01:00:00Z",
+      "bookmaker_count": 20,
+      "h2h": {
+        "home": 6.0,
+        "away": 1.63,
+        "draw": 4.1
+      },
+      "spreads": {
+        "home_price": 2.39,
+        "away_price": 2.05,
+        "home_point": 0.5,
+        "away_point": -0.5
+      },
+      "totals": {
+        "over": 2.02,
+        "under": 1.98,
+        "point": 2.25
+      },
+      "implied_probs": {
+        "home": 16.3,
+        "away": 59.9,
+        "draw": 23.8
+      }
+    },
+    "2026-06-25_Curaçao_Côte d'Ivoire": {
+      "home_team": "Curaçao",
+      "away_team": "Ivory Coast",
+      "commence_time": "2026-06-25T20:00:00Z",
+      "bookmaker_count": 22,
+      "h2h": {
+        "home": 15.0,
+        "away": 1.27,
+        "draw": 7.0
+      },
+      "spreads": {
+        "home_price": 2.18,
+        "away_price": 1.83,
+        "home_point": 1.5,
+        "away_point": -1.5
+      },
+      "totals": {
+        "over": 2.06,
+        "under": 2.15,
+        "point": 2.75
+      },
+      "implied_probs": {
+        "home": 6.7,
+        "away": 79.0,
+        "draw": 14.3
+      }
+    },
+    "2026-06-25_Ecuador_Germany": {
+      "home_team": "Ecuador",
+      "away_team": "Germany",
+      "commence_time": "2026-06-25T20:00:00Z",
+      "bookmaker_count": 22,
+      "h2h": {
+        "home": 5.1,
+        "away": 1.79,
+        "draw": 3.9
+      },
+      "spreads": {
+        "home_price": 2.07,
+        "away_price": 2.0,
+        "home_point": 0.75,
+        "away_point": -0.75
+      },
+      "totals": {
+        "over": 1.93,
+        "under": 1.99,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 19.4,
+        "away": 55.2,
+        "draw": 25.4
+      }
+    },
+    "2026-06-25_Japan_Sweden": {
+      "home_team": "Japan",
+      "away_team": "Sweden",
+      "commence_time": "2026-06-25T23:00:00Z",
+      "bookmaker_count": 22,
+      "h2h": {
+        "home": 2.15,
+        "away": 3.65,
+        "draw": 3.5
+      },
+      "spreads": {
+        "home_price": 2.15,
+        "away_price": 2.05,
+        "home_point": -0.5,
+        "away_point": 0.5
+      },
+      "totals": {
+        "over": 2.1,
+        "under": 2.04,
+        "point": 2.25
+      },
+      "implied_probs": {
+        "home": 45.4,
+        "away": 26.7,
+        "draw": 27.9
+      }
+    },
+    "2026-06-25_Tunisia_Netherlands": {
+      "home_team": "Tunisia",
+      "away_team": "Netherlands",
+      "commence_time": "2026-06-25T23:00:00Z",
+      "bookmaker_count": 22,
+      "h2h": {
+        "home": 7.0,
+        "away": 1.53,
+        "draw": 4.4
+      },
+      "spreads": {
+        "home_price": 2.05,
+        "away_price": 1.83,
+        "home_point": 1.0,
+        "away_point": -1.0
+      },
+      "totals": {
+        "over": 1.88,
+        "under": 1.98,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 14.0,
+        "away": 63.8,
+        "draw": 22.2
+      }
+    },
+    "2026-06-26_Paraguay_Australia": {
+      "home_team": "Paraguay",
+      "away_team": "Australia",
+      "commence_time": "2026-06-26T02:00:00Z",
+      "bookmaker_count": 22,
+      "h2h": {
+        "home": 2.24,
+        "away": 3.7,
+        "draw": 3.3
+      },
+      "spreads": {
+        "home_price": 2.1,
+        "away_price": 2.05,
+        "home_point": -0.25,
+        "away_point": 0.25
+      },
+      "totals": {
+        "over": 2.25,
+        "under": 2.08,
+        "point": 2.25
+      },
+      "implied_probs": {
+        "home": 43.8,
+        "away": 26.5,
+        "draw": 29.7
+      }
+    },
+    "2026-06-26_Turkey_United States": {
+      "home_team": "Turkey",
+      "away_team": "USA",
+      "commence_time": "2026-06-26T02:00:00Z",
+      "bookmaker_count": 22,
+      "h2h": {
+        "home": 2.7,
+        "away": 2.65,
+        "draw": 3.63
+      },
+      "spreads": {
+        "home_price": 1.93,
+        "away_price": 1.95,
+        "home_point": 0.0,
+        "away_point": 0.0
+      },
+      "totals": {
+        "over": 1.93,
+        "under": 1.93,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 36.2,
+        "away": 36.9,
+        "draw": 26.9
+      }
+    },
+    "2026-06-26_Norway_France": {
+      "home_team": "Norway",
+      "away_team": "France",
+      "commence_time": "2026-06-26T19:00:00Z",
+      "bookmaker_count": 22,
+      "h2h": {
+        "home": 4.5,
+        "away": 1.89,
+        "draw": 3.74
+      },
+      "spreads": {
+        "home_price": 2.02,
+        "away_price": 1.85,
+        "home_point": 0.5,
+        "away_point": -0.5
+      },
+      "totals": {
+        "over": 2.02,
+        "under": 1.85,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 21.8,
+        "away": 51.9,
+        "draw": 26.2
+      }
+    },
+    "2026-06-26_Senegal_Iraq": {
+      "home_team": "Senegal",
+      "away_team": "Iraq",
+      "commence_time": "2026-06-26T19:00:00Z",
+      "bookmaker_count": 22,
+      "h2h": {
+        "home": 1.45,
+        "away": 8.6,
+        "draw": 4.8
+      },
+      "spreads": {
+        "home_price": 1.91,
+        "away_price": 2.18,
+        "home_point": -1.0,
+        "away_point": 1.0
+      },
+      "totals": {
+        "over": 1.88,
+        "under": 1.98,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 68.0,
+        "away": 11.5,
+        "draw": 20.5
+      }
+    },
+    "2026-06-27_Cape Verde_Saudi Arabia": {
+      "home_team": "Cape Verde",
+      "away_team": "Saudi Arabia",
+      "commence_time": "2026-06-27T00:00:00Z",
+      "bookmaker_count": 22,
+      "h2h": {
+        "home": 2.65,
+        "away": 3.05,
+        "draw": 3.45
+      },
+      "spreads": {
+        "home_price": 2.0,
+        "away_price": 2.01,
+        "home_point": 0.0,
+        "away_point": 0.0
+      },
+      "totals": {
+        "over": 2.15,
+        "under": 1.95,
+        "point": 2.25
+      },
+      "implied_probs": {
+        "home": 37.9,
+        "away": 32.9,
+        "draw": 29.1
+      }
+    },
+    "2026-06-27_Uruguay_Spain": {
+      "home_team": "Uruguay",
+      "away_team": "Spain",
+      "commence_time": "2026-06-27T00:00:00Z",
+      "bookmaker_count": 22,
+      "h2h": {
+        "home": 5.95,
+        "away": 1.67,
+        "draw": 4.02
+      },
+      "spreads": {
+        "home_price": 2.08,
+        "away_price": 2.02,
+        "home_point": 0.75,
+        "away_point": -0.75
+      },
+      "totals": {
+        "over": 1.93,
+        "under": 1.93,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 16.5,
+        "away": 59.0,
+        "draw": 24.5
+      }
+    },
+    "2026-06-27_New Zealand_Belgium": {
+      "home_team": "New Zealand",
+      "away_team": "Belgium",
+      "commence_time": "2026-06-27T03:00:00Z",
+      "bookmaker_count": 22,
+      "h2h": {
+        "home": 11.49,
+        "away": 1.31,
+        "draw": 6.0
+      },
+      "spreads": {
+        "home_price": 2.0,
+        "away_price": 1.91,
+        "home_point": 1.5,
+        "away_point": -1.5
+      },
+      "totals": {
+        "over": 2.06,
+        "under": 2.17,
+        "point": 2.75
+      },
+      "implied_probs": {
+        "home": 8.6,
+        "away": 75.1,
+        "draw": 16.4
+      }
+    },
+    "2026-06-27_Egypt_Iran": {
+      "home_team": "Egypt",
+      "away_team": "Iran",
+      "commence_time": "2026-06-27T03:00:00Z",
+      "bookmaker_count": 22,
+      "h2h": {
+        "home": 2.3,
+        "away": 3.65,
+        "draw": 3.14
+      },
+      "spreads": {
+        "home_price": 2.16,
+        "away_price": 1.99,
+        "home_point": -0.25,
+        "away_point": 0.25
+      },
+      "totals": {
+        "over": 2.5,
+        "under": 2.55,
+        "point": 2.0
+      },
+      "implied_probs": {
+        "home": 42.3,
+        "away": 26.7,
+        "draw": 31.0
+      }
+    },
+    "2026-06-27_Croatia_Ghana": {
+      "home_team": "Croatia",
+      "away_team": "Ghana",
+      "commence_time": "2026-06-27T21:00:00Z",
+      "bookmaker_count": 22,
+      "h2h": {
+        "home": 1.7,
+        "away": 6.0,
+        "draw": 3.9
+      },
+      "spreads": {
+        "home_price": 2.12,
+        "away_price": 2.09,
+        "home_point": -0.75,
+        "away_point": 0.75
+      },
+      "totals": {
+        "over": 2.1,
+        "under": 2.05,
+        "point": 2.25
+      },
+      "implied_probs": {
+        "home": 58.2,
+        "away": 16.5,
+        "draw": 25.4
+      }
+    },
+    "2026-06-27_Panama_England": {
+      "home_team": "Panama",
+      "away_team": "England",
+      "commence_time": "2026-06-27T21:00:00Z",
+      "bookmaker_count": 22,
+      "h2h": {
+        "home": 11.0,
+        "away": 1.31,
+        "draw": 6.5
+      },
+      "spreads": {
+        "home_price": 2.0,
+        "away_price": 1.87,
+        "home_point": 1.5,
+        "away_point": -1.5
+      },
+      "totals": {
+        "over": 1.99,
+        "under": 2.35,
+        "point": 2.75
+      },
+      "implied_probs": {
+        "home": 9.0,
+        "away": 75.7,
+        "draw": 15.3
+      }
+    },
+    "2026-06-27_Colombia_Portugal": {
+      "home_team": "Colombia",
+      "away_team": "Portugal",
+      "commence_time": "2026-06-27T23:30:00Z",
+      "bookmaker_count": 22,
+      "h2h": {
+        "home": 3.6,
+        "away": 2.2,
+        "draw": 3.4
+      },
+      "spreads": {
+        "home_price": 2.0,
+        "away_price": 2.05,
+        "home_point": 0.25,
+        "away_point": -0.25
+      },
+      "totals": {
+        "over": 2.1,
+        "under": 1.99,
+        "point": 2.5
+      },
+      "implied_probs": {
+        "home": 27.1,
+        "away": 44.3,
+        "draw": 28.7
+      }
+    },
+    "2026-06-27_Congo DR_Uzbekistan": {
+      "home_team": "DR Congo",
+      "away_team": "Uzbekistan",
+      "commence_time": "2026-06-27T23:30:00Z",
+      "bookmaker_count": 22,
+      "h2h": {
+        "home": 2.4,
+        "away": 3.3,
+        "draw": 3.35
+      },
+      "spreads": {
+        "home_price": 2.04,
+        "away_price": 2.15,
+        "home_point": -0.25,
+        "away_point": 0.25
+      },
+      "totals": {
+        "over": 2.25,
+        "under": 2.08,
+        "point": 2.25
+      },
+      "implied_probs": {
+        "home": 40.9,
+        "away": 29.8,
+        "draw": 29.3
+      }
+    },
+    "2026-06-28_Algeria_Austria": {
+      "home_team": "Algeria",
+      "away_team": "Austria",
+      "commence_time": "2026-06-28T02:00:00Z",
+      "bookmaker_count": 22,
+      "h2h": {
+        "home": 3.85,
+        "away": 2.2,
+        "draw": 3.3
+      },
+      "spreads": {
+        "home_price": 2.04,
+        "away_price": 2.08,
+        "home_point": 0.25,
+        "away_point": -0.25
+      },
+      "totals": {
+        "over": 2.15,
+        "under": 2.0,
+        "point": 2.25
+      },
+      "implied_probs": {
+        "home": 25.5,
+        "away": 44.7,
+        "draw": 29.8
+      }
+    },
+    "2026-06-28_Jordan_Argentina": {
+      "home_team": "Jordan",
+      "away_team": "Argentina",
+      "commence_time": "2026-06-28T02:00:00Z",
+      "bookmaker_count": 22,
+      "h2h": {
+        "home": 17.0,
+        "away": 1.21,
+        "draw": 8.0
+      },
+      "spreads": {
+        "home_price": 1.85,
+        "away_price": 2.05,
+        "home_point": 2.0,
+        "away_point": -2.0
+      },
+      "totals": {
+        "over": 2.35,
+        "under": 2.45,
+        "point": 3.0
+      },
+      "implied_probs": {
+        "home": 5.8,
+        "away": 81.8,
+        "draw": 12.4
+      }
+    }
+  },
+  "outrights": {
+    "teams": {
+      "Spain": {
+        "avg_price": 5.6,
+        "best_price": 5.5,
+        "implied_prob_pct": 17.9,
+        "bookmaker_count": 4
+      },
+      "France": {
+        "avg_price": 5.66,
+        "best_price": 5.5,
+        "implied_prob_pct": 17.7,
+        "bookmaker_count": 4
+      },
+      "England": {
+        "avg_price": 8.22,
+        "best_price": 7.0,
+        "implied_prob_pct": 12.2,
+        "bookmaker_count": 4
+      },
+      "Portugal": {
+        "avg_price": 8.7,
+        "best_price": 8.0,
+        "implied_prob_pct": 11.5,
+        "bookmaker_count": 4
+      },
+      "Brazil": {
+        "avg_price": 10.38,
+        "best_price": 10.0,
+        "implied_prob_pct": 9.6,
+        "bookmaker_count": 4
+      },
+      "Argentina": {
+        "avg_price": 10.75,
+        "best_price": 10.0,
+        "implied_prob_pct": 9.3,
+        "bookmaker_count": 4
+      },
+      "Germany": {
+        "avg_price": 15.75,
+        "best_price": 15.0,
+        "implied_prob_pct": 6.3,
+        "bookmaker_count": 4
+      },
+      "Netherlands": {
+        "avg_price": 19.75,
+        "best_price": 19.0,
+        "implied_prob_pct": 5.1,
+        "bookmaker_count": 4
+      },
+      "Norway": {
+        "avg_price": 31.5,
+        "best_price": 26.0,
+        "implied_prob_pct": 3.2,
+        "bookmaker_count": 4
+      },
+      "Belgium": {
+        "avg_price": 37.5,
+        "best_price": 29.0,
+        "implied_prob_pct": 2.7,
+        "bookmaker_count": 4
+      },
+      "Colombia": {
+        "avg_price": 47.75,
+        "best_price": 34.0,
+        "implied_prob_pct": 2.1,
+        "bookmaker_count": 4
+      },
+      "Morocco": {
+        "avg_price": 54.5,
+        "best_price": 51.0,
+        "implied_prob_pct": 1.8,
+        "bookmaker_count": 4
+      },
+      "Mexico": {
+        "avg_price": 54.5,
+        "best_price": 51.0,
+        "implied_prob_pct": 1.8,
+        "bookmaker_count": 4
+      },
+      "Japan": {
+        "avg_price": 59.5,
+        "best_price": 51.0,
+        "implied_prob_pct": 1.7,
+        "bookmaker_count": 4
+      },
+      "United States": {
+        "avg_price": 66.0,
+        "best_price": 51.0,
+        "implied_prob_pct": 1.5,
+        "bookmaker_count": 4
+      },
+      "Switzerland": {
+        "avg_price": 68.5,
+        "best_price": 51.0,
+        "implied_prob_pct": 1.5,
+        "bookmaker_count": 4
+      },
+      "Uruguay": {
+        "avg_price": 78.5,
+        "best_price": 66.0,
+        "implied_prob_pct": 1.3,
+        "bookmaker_count": 4
+      },
+      "Ecuador": {
+        "avg_price": 85.75,
+        "best_price": 81.0,
+        "implied_prob_pct": 1.2,
+        "bookmaker_count": 4
+      },
+      "Turkey": {
+        "avg_price": 93.25,
+        "best_price": 81.0,
+        "implied_prob_pct": 1.1,
+        "bookmaker_count": 4
+      },
+      "Croatia": {
+        "avg_price": 98.25,
+        "best_price": 81.0,
+        "implied_prob_pct": 1.0,
+        "bookmaker_count": 4
+      },
+      "Senegal": {
+        "avg_price": 108.25,
+        "best_price": 91.0,
+        "implied_prob_pct": 0.9,
+        "bookmaker_count": 4
+      },
+      "Sweden": {
+        "avg_price": 160.75,
+        "best_price": 81.0,
+        "implied_prob_pct": 0.6,
+        "bookmaker_count": 4
+      },
+      "Austria": {
+        "avg_price": 165.75,
+        "best_price": 101.0,
+        "implied_prob_pct": 0.6,
+        "bookmaker_count": 4
+      },
+      "South Korea": {
+        "avg_price": 278.25,
+        "best_price": 201.0,
+        "implied_prob_pct": 0.4,
+        "bookmaker_count": 4
+      },
+      "Scotland": {
+        "avg_price": 245.75,
+        "best_price": 151.0,
+        "implied_prob_pct": 0.4,
+        "bookmaker_count": 4
+      },
+      "Canada": {
+        "avg_price": 225.75,
+        "best_price": 101.0,
+        "implied_prob_pct": 0.4,
+        "bookmaker_count": 4
+      },
+      "Côte d'Ivoire": {
+        "avg_price": 253.25,
+        "best_price": 151.0,
+        "implied_prob_pct": 0.4,
+        "bookmaker_count": 4
+      },
+      "Ghana": {
+        "avg_price": 448.25,
+        "best_price": 251.0,
+        "implied_prob_pct": 0.2,
+        "bookmaker_count": 4
+      },
+      "Egypt": {
+        "avg_price": 393.25,
+        "best_price": 301.0,
+        "implied_prob_pct": 0.3,
+        "bookmaker_count": 4
+      },
+      "Paraguay": {
+        "avg_price": 294.5,
+        "best_price": 126.0,
+        "implied_prob_pct": 0.3,
+        "bookmaker_count": 4
+      },
+      "Algeria": {
+        "avg_price": 423.25,
+        "best_price": 301.0,
+        "implied_prob_pct": 0.2,
+        "bookmaker_count": 4
+      },
+      "Tunisia": {
+        "avg_price": 625.75,
+        "best_price": 501.0,
+        "implied_prob_pct": 0.2,
+        "bookmaker_count": 4
+      },
+      "Bosnia and Herzegovina": {
+        "avg_price": 448.25,
+        "best_price": 201.0,
+        "implied_prob_pct": 0.2,
+        "bookmaker_count": 4
+      },
+      "Czechia": {
+        "avg_price": 558.25,
+        "best_price": 301.0,
+        "implied_prob_pct": 0.2,
+        "bookmaker_count": 4
+      },
+      "Australia": {
+        "avg_price": 508.25,
+        "best_price": 401.0,
+        "implied_prob_pct": 0.2,
+        "bookmaker_count": 4
+      },
+      "Iran": {
+        "avg_price": 675.75,
+        "best_price": 501.0,
+        "implied_prob_pct": 0.1,
+        "bookmaker_count": 4
+      },
+      "Congo DR": {
+        "avg_price": 875.75,
+        "best_price": 751.0,
+        "implied_prob_pct": 0.1,
+        "bookmaker_count": 4
+      },
+      "Cape Verde": {
+        "avg_price": 1250.75,
+        "best_price": 1000.0,
+        "implied_prob_pct": 0.1,
+        "bookmaker_count": 4
+      },
+      "Saudi Arabia": {
+        "avg_price": 1000.75,
+        "best_price": 1000.0,
+        "implied_prob_pct": 0.1,
+        "bookmaker_count": 4
+      },
+      "Panama": {
+        "avg_price": 1125.75,
+        "best_price": 1000.0,
+        "implied_prob_pct": 0.1,
+        "bookmaker_count": 4
+      },
+      "Uzbekistan": {
+        "avg_price": 1500.75,
+        "best_price": 1000.0,
+        "implied_prob_pct": 0.1,
+        "bookmaker_count": 4
+      },
+      "South Africa": {
+        "avg_price": 1125.75,
+        "best_price": 501.0,
+        "implied_prob_pct": 0.1,
+        "bookmaker_count": 4
+      },
+      "Qatar": {
+        "avg_price": 1125.75,
+        "best_price": 1000.0,
+        "implied_prob_pct": 0.1,
+        "bookmaker_count": 4
+      },
+      "New Zealand": {
+        "avg_price": 1375.75,
+        "best_price": 1000.0,
+        "implied_prob_pct": 0.1,
+        "bookmaker_count": 4
+      },
+      "Iraq": {
+        "avg_price": 1250.75,
+        "best_price": 1000.0,
+        "implied_prob_pct": 0.1,
+        "bookmaker_count": 4
+      },
+      "Haiti": {
+        "avg_price": 1750.75,
+        "best_price": 1000.0,
+        "implied_prob_pct": 0.1,
+        "bookmaker_count": 4
+      },
+      "Curaçao": {
+        "avg_price": 1875.75,
+        "best_price": 1000.0,
+        "implied_prob_pct": 0.1,
+        "bookmaker_count": 4
+      },
+      "Jordan": {
+        "avg_price": 2000.75,
+        "best_price": 1000.0,
+        "implied_prob_pct": 0.0,
+        "bookmaker_count": 4
+      }
+    },
+    "top_5": [
+      {
+        "team": "Spain",
+        "avg_price": 5.6,
+        "best_price": 5.5,
+        "implied_prob_pct": 17.9,
+        "bookmaker_count": 4
+      },
+      {
+        "team": "France",
+        "avg_price": 5.66,
+        "best_price": 5.5,
+        "implied_prob_pct": 17.7,
+        "bookmaker_count": 4
+      },
+      {
+        "team": "England",
+        "avg_price": 8.22,
+        "best_price": 7.0,
+        "implied_prob_pct": 12.2,
+        "bookmaker_count": 4
+      },
+      {
+        "team": "Portugal",
+        "avg_price": 8.7,
+        "best_price": 8.0,
+        "implied_prob_pct": 11.5,
+        "bookmaker_count": 4
+      },
+      {
+        "team": "Brazil",
+        "avg_price": 10.38,
+        "best_price": 10.0,
+        "implied_prob_pct": 9.6,
+        "bookmaker_count": 4
+      }
+    ],
+    "updated_at": "2026-06-12T11:16:34Z"
+  }
+}

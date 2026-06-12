@@ -17,6 +17,7 @@ from models.predictor import predict_match
 from pipeline.cron_update import execute_daily_pipeline
 from pipeline.backtest import get_backtest_summary
 from pipeline.lineup_fetcher import run_lineup_poll, reset_lineup_cache, get_lineup_multipliers
+from services.odds_api import get_odds_client
 
 router = APIRouter(prefix="/api", tags=["predictions"])
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
@@ -111,6 +112,20 @@ async def get_dashboard():
     # Count live-lineup matches
     live_count = sum(1 for p in predictions if p.get("prediction_status") == "Live-Lineup")
 
+    # Count completed matches (have result)
+    completed_count = sum(1 for p in predictions if p.get("result", {}).get("status") == "FT")
+
+    # Sort: today's matches first, then future, then past
+    today_str = datetime.utcnow().strftime("%Y-%m-%d")
+
+    def _sort_key(p):
+        date = p.get("date", "9999")
+        has_result = p.get("result", {}).get("status") == "FT"
+        is_today = 0 if date == today_str else (1 if date > today_str else 2)
+        return (is_today, date, 0 if has_result else 1)
+
+    predictions.sort(key=_sort_key)
+
     return {
         "meta": {
             "title": "世界杯2026预测系统",
@@ -120,6 +135,7 @@ async def get_dashboard():
             "backtest_accuracy": 0.0,
             "training_samples": 0,
             "live_lineup_count": live_count,
+            "completed_count": completed_count,
             "cache": cache_meta,
         },
         "predictions": predictions,
@@ -226,6 +242,58 @@ async def get_match_lineup(
 
 
 # ---------------------------------------------------------------------------
+# Odds routes — v1.0.0 market odds integration (the-odds-api.com)
+# ---------------------------------------------------------------------------
+
+@router.get("/odds")
+async def get_match_odds():
+    """
+    Return the latest match odds cache.
+
+    Includes H2H prices, market-implied probabilities,
+    and comparison with model predictions.
+    """
+    path = DATA_DIR / "odds_cache.json"
+    if path.exists():
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    return {"updated_at": None, "matches": {}, "outrights": {}}
+
+
+@router.get("/odds/outrights")
+async def get_outright_odds():
+    """Return World Cup winner outright odds."""
+    path = DATA_DIR / "odds_cache.json"
+    if path.exists():
+        with open(path, encoding="utf-8") as f:
+            raw = json.load(f)
+        return raw.get("outrights", {})
+    return {"teams": {}, "top_5": [], "updated_at": None}
+
+
+@router.get("/odds/{home}/{away}/{date}")
+async def get_match_odds_detail(
+    home: str,
+    away: str,
+    date: str,
+):
+    """
+    Get odds for a specific match.
+
+    Example: /api/odds/Canada/Bosnia and Herzegovina/2026-06-12
+    """
+    match_key = f"{date}_{home}_{away}"
+    path = DATA_DIR / "odds_cache.json"
+    if path.exists():
+        with open(path, encoding="utf-8") as f:
+            raw = json.load(f)
+        match_odds = raw.get("matches", {}).get(match_key)
+        if match_odds:
+            return {"match_key": match_key, **match_odds}
+    return {"match_key": match_key, "error": "No odds data for this match"}
+
+
+# ---------------------------------------------------------------------------
 # Admin routes — pipeline control & backtest visibility
 # ---------------------------------------------------------------------------
 
@@ -272,6 +340,133 @@ async def force_refresh_lineup():
             "status": "ok",
             "summary": result,
             "hint": "If lineups were fetched, re-run POST /api/admin/force-refresh to regenerate predictions with Live-Lineup multipliers.",
+        }
+    except Exception as e:
+        return JSONResponse(status_code=500, content={"status": "error", "detail": str(e)})
+
+
+@admin_router.post("/live-refresh")
+async def live_refresh():
+    """
+    Lightweight real-time refresh: fetches live results + lineups,
+    merges into the prediction cache. Designed to be called every 2-5 min
+    during match windows (June 11 – July 19, 2026).
+
+    Much faster than force-refresh (skips weather/injuries/backtest).
+    """
+    from pipeline.result_fetcher import fetch_live_results
+
+    try:
+        # 1. Fetch live results
+        live_results = await fetch_live_results()
+        results_lookup: dict[str, dict] = {}
+        for r in live_results:
+            key = f"{r['date']}_{r['home']}_{r['away']}"
+            if r.get("status") and r["status"] != "NS":
+                results_lookup[key] = r
+
+        # 2. Poll lineups
+        lineup_summary = await run_lineup_poll()
+
+        # 3. Refresh odds cache (if API key available)
+        odds_fetched = 0
+        try:
+            client = get_odds_client()
+            odds_summary = await client.get_best_odds_summary()
+            outright_summary = await client.get_outright_summary()
+            odds_cache = {
+                "updated_at": datetime.utcnow().isoformat() + "Z",
+                "matches": odds_summary,
+                "outrights": outright_summary,
+            }
+            cache_path = DATA_DIR / "odds_cache.json"
+            with open(cache_path, "w", encoding="utf-8") as f:
+                json.dump(odds_cache, f, ensure_ascii=False, indent=2)
+            odds_fetched = len(odds_summary)
+        except Exception:
+            pass
+
+        # 4. Merge into latest_predictions.json
+        predictions, updated_at = _load_predictions()
+        modified = 0
+        for p in predictions:
+            result_key = f"{p['date']}_{p['home']}_{p['away']}"
+            if result_key in results_lookup:
+                r = results_lookup[result_key]
+                if not p.get("result") or p["result"].get("status") != r.get("status"):
+                    p["result"] = {
+                        "home_score": r.get("home_score"),
+                        "away_score": r.get("away_score"),
+                        "outcome": r.get("outcome"),
+                        "status": r.get("status", "FT"),
+                    }
+                    modified += 1
+
+        # 4. Write back
+        if modified > 0 or lineup_summary.get("lineups_fetched", 0) > 0 or odds_fetched > 0:
+            cache_path = DATA_DIR / "latest_predictions.json"
+            live_count = sum(1 for p in predictions if p.get("prediction_status") == "Live-Lineup")
+            bt_summary_data = {}
+            bt_path = DATA_DIR / "backtest_history.json"
+            if bt_path.exists():
+                with open(bt_path, encoding="utf-8") as f:
+                    bt_data = json.load(f)
+                cum = bt_data.get("cumulative", {})
+                bt_summary_data = {
+                    "accuracy": cum.get("accuracy", 0),
+                    "total_matches": cum.get("total_matches", 0),
+                    "roi": cum.get("roi", 0),
+                }
+
+            out = {
+                "updated_at": datetime.utcnow().isoformat() + "Z",
+                "count": len(predictions),
+                "live_lineup_count": live_count,
+                "backtest": bt_summary_data,
+                "predictions": predictions,
+            }
+            with open(cache_path, "w", encoding="utf-8") as f:
+                json.dump(out, f, ensure_ascii=False, indent=2)
+
+        return {
+            "status": "ok",
+            "results_fetched": len(live_results),
+            "results_completed": len(results_lookup),
+            "predictions_modified": modified,
+            "odds_fetched": odds_fetched,
+            "lineups": lineup_summary,
+        }
+    except Exception as e:
+        return JSONResponse(status_code=500, content={"status": "error", "detail": str(e)})
+
+
+@admin_router.post("/refresh-odds")
+async def refresh_odds():
+    """
+    Fetch latest odds from the-odds-api.com and cache them.
+
+    Includes match H2H odds and outright winner futures.
+    Call every 5-15 minutes during active betting windows.
+    """
+    try:
+        client = get_odds_client()
+        odds_summary = await client.get_best_odds_summary()
+        outright_summary = await client.get_outright_summary()
+
+        cache = {
+            "updated_at": datetime.utcnow().isoformat() + "Z",
+            "matches": odds_summary,
+            "outrights": outright_summary,
+        }
+
+        cache_path = DATA_DIR / "odds_cache.json"
+        with open(cache_path, "w", encoding="utf-8") as f:
+            json.dump(cache, f, ensure_ascii=False, indent=2)
+
+        return {
+            "status": "ok",
+            "matches_cached": len(odds_summary),
+            "outrights_teams": len(outright_summary.get("teams", {})),
         }
     except Exception as e:
         return JSONResponse(status_code=500, content={"status": "error", "detail": str(e)})

@@ -21,7 +21,7 @@ from typing import Optional
 
 from models.predictor import predict_match
 from pipeline.backtest import run_daily_backtest, get_backtest_summary
-from pipeline.result_fetcher import fetch_yesterday_results
+from pipeline.result_fetcher import fetch_yesterday_results, fetch_live_results
 from pipeline.lineup_fetcher import run_lineup_poll, get_lineup_multipliers
 from services.weather import fetch_all_weather, load_weather_cache, get_weather_for_stadium
 from services.injuries import generate_injuries, load_injury_cache, get_injuries_for_team
@@ -85,6 +85,28 @@ async def execute_daily_pipeline(
             summary["phases"]["backtest"] = {"status": "error"}
 
     # =================================================================
+    # Phase 1b — Fetch real match results from Flashscore
+    # =================================================================
+    results_lookup: dict[str, dict] = {}
+    try:
+        live_results = await fetch_live_results()
+        for r in live_results:
+            key = f"{r['date']}_{r['home']}_{r['away']}"
+            if r.get("status") and r["status"] != "NS":
+                results_lookup[key] = r
+        summary["phases"]["results"] = {
+            "fetched": len(live_results),
+            "completed": len(results_lookup),
+        }
+        _logger.info(
+            "Phase 1b RESULTS: %d fetched, %d completed",
+            len(live_results), len(results_lookup),
+        )
+    except Exception:
+        _logger.exception("Phase 1b RESULTS fetch failed")
+        summary["phases"]["results"] = {"status": "error"}
+
+    # =================================================================
     # Phase 2 — Refresh live data for upcoming matches
     # =================================================================
     if not skip_refresh:
@@ -113,9 +135,36 @@ async def execute_daily_pipeline(
                 _logger.exception("Phase 2c LINEUP poll failed")
                 summary["phases"]["lineups"] = {"status": "error"}
 
+            # 2d. Market odds (the-odds-api.com)
+            try:
+                from services.odds_api import get_odds_client
+                client = get_odds_client()
+                odds_data = await client.get_best_odds_summary()
+                outright_data = await client.get_outright_summary()
+                odds_cache = {
+                    "updated_at": datetime.utcnow().isoformat() + "Z",
+                    "matches": odds_data,
+                    "outrights": outright_data,
+                }
+                cache_path = DATA_DIR / "odds_cache.json"
+                with open(cache_path, "w", encoding="utf-8") as f:
+                    json.dump(odds_cache, f, ensure_ascii=False, indent=2)
+                summary["phases"]["odds"] = {
+                    "matches_cached": len(odds_data),
+                    "outrights_teams": len(outright_data.get("teams", {})),
+                }
+                _logger.info(
+                    "Phase 2d ODDS: %d matches, %d outrights teams",
+                    len(odds_data), len(outright_data.get("teams", {})),
+                )
+            except Exception:
+                _logger.exception("Phase 2d ODDS fetch failed")
+                summary["phases"]["odds"] = {"status": "error"}
+
             _logger.info(
-                "Phase 2 REFRESH: weather %d/%d, injuries %d teams",
+                "Phase 2 REFRESH: weather %d/%d, injuries %d teams, odds %d matches",
                 w_ok, len(weather_results), len(injuries),
+                summary["phases"].get("odds", {}).get("matches_cached", 0),
             )
         except Exception:
             _logger.exception("Phase 2 REFRESH failed")
@@ -146,6 +195,16 @@ async def execute_daily_pipeline(
                             m["away"]: get_injuries_for_team(m["away"]),
                         },
                     )
+                    # Merge real result if available
+                    result_key = f"{m['date']}_{m['home']}_{m['away']}"
+                    if result_key in results_lookup:
+                        r = results_lookup[result_key]
+                        pred["result"] = {
+                            "home_score": r.get("home_score"),
+                            "away_score": r.get("away_score"),
+                            "outcome": r.get("outcome"),
+                            "status": r.get("status", "FT"),
+                        }
                     new_predictions.append(pred)
 
                 # Attach backtest metadata

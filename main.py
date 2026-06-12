@@ -96,6 +96,6 @@ app.include_router(api_router)
 app.include_router(admin_router)
 
 
-@app.get("/")
+@app.api_route("/", methods=["GET", "HEAD"])
 async def root():
     return {"service": "WC26 Prediction API", "version": "3.0.0", "docs": "/docs"}
